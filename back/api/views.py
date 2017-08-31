@@ -35,7 +35,10 @@ class ApiDreams(APIView):
 				observation=body['observation'],
 				liason=body['liason'],
 				status=body['status'],
-				planning_description=body['planning_description']
+				planning_description=body['planning_description'],
+				health_conditions=body['health_conditions'],
+				contact_name=body['contact_name'],
+				dream_report=body['dream_report']
 			)
 		dream.save()
 		dream_json = json.loads(serializers.serialize("json", [dream,]))
