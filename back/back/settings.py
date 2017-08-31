@@ -37,7 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'api'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -69,6 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'back.wsgi.application'
 
+ALLOWED_HOSTS = ['0.0.0.0', 'sonhos.institutorope.com.br']
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
