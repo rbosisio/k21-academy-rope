@@ -14,6 +14,7 @@ class Dream(models.Model):
 
 	name = models.CharField('Nome do Paciente', max_length=255, default=None)
 	age = models.CharField('Idade do Paciente', max_length=255, default=None)
+	address = models.CharField('Endereço do Paciente', max_length=255, default=None, null=True)
 	contact_name = models.CharField('Nome', max_length=255, default=None)
 	email = models.CharField('E-mail', max_length=255, default=None)
 	phone = models.CharField('Telefone', max_length=255, default=None)

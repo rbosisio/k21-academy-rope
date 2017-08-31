@@ -24,6 +24,7 @@ class ApiDreams(APIView):
 				name=body['name'],
 				age=body['age'],
 				email=body['email'],
+				address=body['address'],
 				phone=body['phone'],
 				inmate=body['inmate'],
 				hospital_name=body['hospital_name'],
