@@ -28,7 +28,7 @@ class Dream(models.Model):
 	hospital_address = models.CharField('Endereço (onde paciente está)', max_length=255, default=None)
 	observation = models.TextField('Observação', default=None)
 	liason = models.CharField('Relacionamento com Paciente', max_length=255, default=None)
-	status = models.CharField('Status', max_length=1, choices=STATUS)
+	status = models.CharField('Status', max_length=20, choices=STATUS)
 	planning_description = models.TextField('Descrição do Planejamento', default=None)
 
 	class Meta:
