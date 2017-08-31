@@ -1,0 +1,115 @@
+<h1 class="logo-title my-3" >Cadastrar Sonho</h1>
+<form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
+    <div class="form-group row">
+      <div class="col-9">
+        <label>Nome</label>
+        <input formControlName="name" type="text" class="form-control">
+      </div>
+      <div class="col-3">
+        <label>Idade</label>
+        <input formControlName="age" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-12">
+          <label>Nome do Contato</label>
+          <input formControlName="contact_name" type="text" class="form-control" >
+        </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-6">
+        <label>Email</label>
+        <input formControlName="email" type="email" class="form-control" placeholder="exemplo@email.com">
+      </div>
+      <div class="col-6">
+        <label>Telefone</label>
+        <input formControlName="phone" type="text" class="form-control" placeholder="(21) 99999-9999">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-6">
+        <label>Endereço do sonhador</label>
+        <input formControlName="address" type="text" class="form-control">
+      </div>
+      <div class="col-6">
+        <label>Relação com o sonhador</label>
+        <input formControlName="liason" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-12">
+        <label>O sonhador está internado? </label>
+        <label class="custom-control custom-radio">
+          <input formControlName="inmate" name="inmate" type="radio" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Sim</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input formControlName="inmate" name="inmate" type="radio" class="custom-control-input" checked>
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Não</span>
+        </label>
+      </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-6">
+          <label>Nome da Instituição</label>
+          <input formControlName="hospital_name" type="text" class="form-control">
+        </div>
+        <div class="col-6">
+          <label>Contato da Instituição</label>
+          <input formControlName="hospital_contact" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-12">
+        <label>O sonhador tem aprovação médica para o sonho ser realizado? </label>
+        <label class="custom-control custom-radio">
+          <input formControlName="medical_approved" name="medical_approved" type="radio" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Sim</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input formControlName="medical_approved" name="medical_approved" type="radio" class="custom-control-input" checked>
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Não</span>
+        </label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-12">
+        <label>O sonhador tem aprovação do seu responsável para o sonho ser realizado? </label>
+        <label class="custom-control custom-radio">
+          <input formControlName="parental_approved" name="parental_approved" type="radio" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Sim</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input formControlName="parental_approved" name="parental_approved" type="radio" class="custom-control-input" checked>
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Não</span>
+        </label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-6">
+        <label>Descrição do sonho</label>
+        <textarea formControlName="description" class="form-control" rows="10"></textarea>
+      </div>
+      <div class="col-6">
+        <label>Um breve relato sobre o sonho</label>
+        <textarea formControlName="dream_report" class="form-control" rows="10"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-12">
+        <label>Condições médicas e expectativa de vida do sonhador</label>
+        <textarea formControlName="health_conditions" class="form-control" rows="10"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col">
+        <button type="submit" class="btn btn-primary">Cadastrar sonho</button>
+      </div>
+    </div>
+</form>
