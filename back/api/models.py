@@ -20,12 +20,16 @@ class Dream(models.Model):
 	hospital_name = models.CharField('Nome do Hospital', max_length=255, default=None)
 	hospital_contact = models.CharField('Contato do Hospital', max_length=255, default=None)  
 	medical_approved = models.BooleanField('Aprovação Médica', default=False)
-	parental_approved = models.CharField('Aprovação do Responsável', max_length=255, default=None)
+	parental_approved = models.BooleanField('Aprovação do Responsável', default=False)
 	description = models.TextField('Descrição', default=None)
 	hospital_address = models.CharField('Endereço do Hospital', max_length=255, default=None)
-	observation = models.CharField('Observação', max_length=255, default=None)
-	liason = models.TextField('Relacionamento com Paciente', default=None)
+	observation = models.TextField('Observação', default=None)
+	liason = models.CharField('Relacionamento com Paciente', max_length=255, default=None)
 	status = models.CharField('Status', max_length=1, choices=STATUS)
 	planning_description = models.TextField('Descrição do Planejamento', default=None)
+
+	class Meta:
+		# verbose_name = 'Gestão de Sonhos'
+		verbose_name_plural = 'Sonhos'
 
 
