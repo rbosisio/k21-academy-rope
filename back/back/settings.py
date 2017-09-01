@@ -78,7 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'back.wsgi.application'
 
-ALLOWED_HOSTS = ['0.0.0.0', 'sonhos.institutorope.com.br']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost','sonhos.institutorope.com.br']
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
