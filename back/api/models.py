@@ -50,6 +50,8 @@ class Dream(models.Model):
 		# verbose_name = 'Gestão de Sonhos'
 		verbose_name_plural = 'Sonhos'
 
+# ================================================================================================================================= #
+
 class AvailableDaysTimes(models.Model):
 	DAYS = (
         ('seg', 'Segunda'),
@@ -104,4 +106,39 @@ class Volunteer(models.Model):
         ('aprovado', 'Aprovado'),
         ('reprovado', 'Reprovado')
     )
+
 	status = models.CharField('Status ', max_length=20, choices=STATUS, default=None)
+
+# ================================================================================================================================= #
+
+class Partner(models.Model):
+	name = models.CharField('Nome', max_length=255, default=None)
+
+	DOCUMENT_TYPE = (
+        ('pf', 'Pessoa Física'),
+        ('pj', 'Pessoa Jurídica'),
+    )
+	document_type = models.CharField('Opção de pessoa', max_length=20, choices=DOCUMENT_TYPE)
+	
+	contact_name = models.CharField('Nome do contato', max_length=255, default=None, null=True)
+	document = models.CharField('Documento', max_length=255, default=None, null=True)
+	telephone = models.CharField('Telefone', max_length=255, default=None)
+	cellphone = models.CharField('Celular', max_length=255, default=None)
+	address = models.CharField('Endereço ', max_length=255, default=None)
+
+	has_specific_dream = models.BooleanField('Tem sonho específico?', default=False)
+	money_help = models.BooleanField('Ajuda com dinheiro?', default=False)
+	service_help = models.BooleanField('Ajuda com seviço?', default=False)
+
+	help_description = models.TextField('Descrição da ajuda', default=None)
+
+	observation = models.TextField('Observações (Especificar doação)', default=None)
+
+	STATUS = (
+        ('novo', 'Novo'),
+        ('aprovado', 'Aprovado'),
+        ('reprovado', 'Reprovado')
+    )
+	status = models.CharField('Designação do voluntário ', max_length=20, choices=STATUS, default=None)
+	
+	available_days_times = models.ManyToManyField(AvailableDaysTimes)
