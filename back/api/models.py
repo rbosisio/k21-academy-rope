@@ -104,4 +104,4 @@ class Volunteer(models.Model):
         ('aprovado', 'Aprovado'),
         ('reprovado', 'Reprovado')
     )
-	status = models.CharField('Designação do voluntário ', max_length=20, choices=STATUS, default=None)
+	status = models.CharField('Status ', max_length=20, choices=STATUS, default=None)
