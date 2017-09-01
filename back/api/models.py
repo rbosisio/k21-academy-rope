@@ -68,10 +68,15 @@ class AvailableDaysTimes(models.Model):
     )
 	time = models.CharField('Horário do dia', max_length=20, choices=TIMES, default=None)
 
+	order = models.IntegerField('Ordem na lista', default=0)
+
 	def __str__(self):
 		days = dict(self.DAYS)
 		times = dict(self.TIMES)
 		return days[self.day] + " - " + times[self.time]
+
+	class Meta:
+		ordering = ('order',)
 
 class Volunteer(models.Model):
 	name = models.CharField('Nome', max_length=255, default=None)
