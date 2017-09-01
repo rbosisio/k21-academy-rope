@@ -36,4 +36,53 @@ class Dream(models.Model):
 		# verbose_name = 'Gestão de Sonhos'
 		verbose_name_plural = 'Sonhos'
 
+class AvailableDaysTimes(models.Model):
+	DAYS = (
+        ('seg', 'Segunda'),
+        ('ter', 'Terça'),
+        ('qua', 'Quarta'),
+        ('qui', 'Quinta'),
+        ('sex', 'Sexta'),
+        ('sab', 'Sábado'),
+        ('dom', 'Domingo')
+    )
+	day = models.CharField('Dia da semana', max_length=20, choices=DAYS, default=None)
 
+	TIMES = (
+        ('manha', 'Manhã'),
+        ('tarde', 'Tarde'),
+        ('noite', 'Noite')
+    )
+	time = models.CharField('Horário do dia', max_length=20, choices=TIMES, default=None)
+
+	def __str__(self):
+		days = dict(self.DAYS)
+		times = dict(self.TIMES)
+		return days[self.day] + " - " + times[self.time]
+
+class Volunteer(models.Model):
+	name = models.CharField('Nome', max_length=255, default=None)
+	nickname = models.CharField('Apelido', max_length=255, default=None)
+	birthdate = models.DateField('Data de nascimento', default=None)
+	telephone = models.CharField('Telefone', max_length=255, default=None)
+	cellphone = models.CharField('Celular', max_length=255, default=None)
+	email = models.CharField('Email', max_length=255, default=None)
+	address = models.CharField('Endereço ', max_length=255, default=None)
+	personal_characteristics = models.TextField('Características pessoais', default=None)
+	talents = models.TextField('Talentos', default=None)
+
+	available_days_times = models.ManyToManyField(AvailableDaysTimes)
+
+	ASSIGNMENTS = (
+        ('hunter', 'Hunter'),
+        ('farm', 'Farm'),
+        ('reg', 'REG')
+    )
+	assignment = models.CharField('Designação do voluntário ', max_length=20, choices=ASSIGNMENTS)
+
+	STATUS = (
+        ('novo', 'Novo'),
+        ('aprovado', 'Aprovado'),
+        ('reprovado', 'Reprovado')
+    )
+	status = models.CharField('Designação do voluntário ', max_length=20, choices=STATUS, default=None)
