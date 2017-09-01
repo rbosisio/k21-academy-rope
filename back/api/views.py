@@ -48,7 +48,7 @@ class ApiDreams(APIView):
 				)
 			dream.save()
 		except Exception as e:
-			return Response({'error': True, 'msg': 'Erro ao salvar o sonho!'}, status=status.HTTP_400_BAD_REQUEST)
+			return Response({'error': True, 'msg': 'Erro ao salvar o sonho!', 'field': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 		dream_json = json.loads(serializers.serialize("json", [dream,]))
 		return Response(dream_json)
 

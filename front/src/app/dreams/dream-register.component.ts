@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms'
+import { FormGroup, FormControl, Validators  } from '@angular/forms'
 import { Http } from '@angular/http';
 
 @Component({
@@ -8,40 +8,42 @@ import { Http } from '@angular/http';
   styleUrls: ['./dream-register.component.scss']
 })
 export class DreamRegisterComponent {
-
+  
+  registerDreamUrl: string = "http://sonhos.institutorope.com.br:8000/api/dreams/";
+  
+  formSubmitted: boolean = false;
+  registerFormFieldValid: {} = {};
   registerForm:FormGroup = new FormGroup({
-    name: new FormControl(),
-    age: new FormControl(),
-    email: new FormControl(),
-    phone: new FormControl(),
-    address: new FormControl(),
-    contact_name: new FormControl(),
-    liason: new FormControl(),
-    inmate: new FormControl(),
+    name: new FormControl('', Validators.required),
+    age: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    contact_name: new FormControl('', Validators.required),
+    liason: new FormControl('', Validators.required),
+    inmate: new FormControl(false, Validators.required),
     hospital_name: new FormControl(),
     hospital_contact: new FormControl(),
-    medical_approved: new FormControl(),
-    parental_approved: new FormControl(),
-    description: new FormControl(),
-    hospital_address: new FormControl(),
-    observation: new FormControl(),
-    status: new FormControl(),
-    planning_description: new FormControl(),
-    health_conditions: new FormControl(),
-    dream_report: new FormControl()
-  }); 
-  
+    medical_approved: new FormControl(false, Validators.required),
+    parental_approved: new FormControl(false, Validators.required),
+    description: new FormControl('', Validators.required),
+    hospital_address: new FormControl('', Validators.required),
+    observation: new FormControl('', Validators.required),
+    planning_description: new FormControl('', Validators.required),
+    health_conditions: new FormControl('', Validators.required),
+    dream_report: new FormControl('', Validators.required)
+  });
+
   constructor(private http: Http) { }
 
   onFormSubmit(): void {
+    this.formSubmitted = true;
+
     let formObj = this.registerForm.getRawValue();
-    formObj.inmate = false; 
-    formObj.medical_approved = true; 
-    formObj.parental_approved = true;
 
     let serializedForm = JSON.stringify(formObj);
 
-    this.http.post("http://sonhos.institutorope.com.br:8000/api/dreams/", serializedForm)
+    this.http.post(this.registerDreamUrl, serializedForm)
     .subscribe(
         data => console.log("success!", data),
         error => console.error("couldn't post because", error)

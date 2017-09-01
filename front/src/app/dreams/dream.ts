@@ -4,8 +4,8 @@ export interface Dream {
     email: string;
     phone: string
     inmate: boolean;
-    hospital_name: string;
-    hospital_contact: string
+    hospital_name?: string;
+    hospital_contact?: string
     medical_approved: boolean;
     parental_approved: boolean;
     description: string;

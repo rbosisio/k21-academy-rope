@@ -14,10 +14,10 @@ import { DreamRegisterComponent } from "./dream-register.component";
     HttpModule,
     RouterModule.forChild([
       { path: 'cadastro', component: DreamRegisterComponent }  
-    ]),
+    ])
   ],
   declarations: [
     DreamRegisterComponent
   ]
 })
-export class DreamRegisterModule { }
+export class DreamModule { }
