@@ -12,25 +12,37 @@ class Dream(models.Model):
         ('pre_aprovado', 'Pré-Aprovado'),
     )
 
-	name = models.CharField('Nome do Paciente', max_length=255, default=None)
-	age = models.CharField('Idade do Paciente', max_length=255, default=None)
-	address = models.CharField('Endereço do Paciente', max_length=255, default=None, null=True)
-	contact_name = models.CharField('Nome', max_length=255, default=None)
-	email = models.CharField('E-mail', max_length=255, default=None)
-	phone = models.CharField('Telefone', max_length=255, default=None)
-	inmate = models.BooleanField('Internado', default=False)
-	hospital_name = models.CharField('Nome do Hospital', max_length=255, default=None, null=True)
-	hospital_contact = models.CharField('Contato do Hospital', max_length=255, default=None, null=True)
-	health_conditions = models.TextField('Condições Médicas e Expectativa', default=None)  
-	medical_approved = models.BooleanField('Aprovação Médica', default=False)
-	parental_approved = models.BooleanField('Aprovação do Responsável', default=False)
-	description = models.TextField('Descrição do Sonho', default=None)
-	dream_report = models.TextField('Relato do Sonho', default=None)
-	hospital_address = models.CharField('Endereço (onde paciente está)', max_length=255, default=None, null=True)
-	observation = models.TextField('Observação', default=None)
-	liason = models.CharField('Relacionamento com Paciente', max_length=255, default=None)
-	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo')
-	planning_description = models.TextField('Descrição do Planejamento', default=None)
+	CATEGORY = (
+		('sonho_ir', 'Sonho Ir'),
+        ('sonho_ir', 'Sonho Ir'),
+        ('sonho_fazer', 'Sonho Fazer'),
+        ('sonho_conhecer_rever', 'Sonho Conhecer / Rever'),
+    )
+
+	dreamer_name = models.CharField('Nome do Sonhador', max_length=255, default=None)
+	dreamer_age = models.CharField('Idade do Sonhador', max_length=255, default=None)
+	dreamer_address = models.CharField('Endereço do Sonhador', max_length=255, default=None)
+	dreamer_health_conditions = models.TextField('Condições Médicas e Expectativa de Vida', default=None)
+	
+	contact_name = models.CharField('Nome do Contato', max_length=255, default=None)
+	contact_email = models.CharField('E-mail do Contato', max_length=255, default=None)
+	contact_phone = models.CharField('Telefone do Contato', max_length=255, default=None)
+	contact_liason = models.CharField('Relacionamento com Sonhador (Ex. filho, cuidador)', max_length=255, default=None)
+	
+	inmate = models.BooleanField('Está Internado?', default=False)
+	local = models.CharField('Local de Internação', max_length=255, default=None, null=True)
+	local_address = models.CharField('Endereço do Local de Internação', max_length=255, default=None, null=True)
+	local_name = models.CharField('Nome do Contato do Local de Internação', max_length=255, default=None, null=True)
+	local_phone = models.CharField('Telefone do Contato do Local de Internação', max_length=255, default=None, null=True)
+	
+	medical_approved = models.BooleanField('Tem Aprovação Médica para a Realização do Sonho?', default=False)
+	parental_approved = models.BooleanField('Tem Aprovação do Responsável para a Realização do Sonho?', default=False)
+	
+	description = models.TextField('Descrição Detalhada do Sonho', default=None)
+	
+	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default=None, null=True)
+	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True)
+	planning_description = models.TextField('Planejamento do Sonho', default=None, null=True)
 
 	class Meta:
 		# verbose_name = 'Gestão de Sonhos'
