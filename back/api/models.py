@@ -30,21 +30,21 @@ class Dream(models.Model):
 	contact_liason = models.CharField('Relacionamento com Sonhador (Ex. filho, cuidador)', max_length=255, default=None)
 	
 	inmate = models.BooleanField('Está Internado?', default=False)
-	local = models.CharField('Local de Internação', max_length=255, default=None, null=True)
-	local_address = models.CharField('Endereço do Local de Internação', max_length=255, default=None, null=True)
-	local_name = models.CharField('Nome do Contato do Local de Internação', max_length=255, default=None, null=True)
-	local_phone = models.CharField('Telefone do Contato do Local de Internação', max_length=255, default=None, null=True)
+	local = models.CharField('Local de Internação', max_length=255, default=None, null=True, blank=True)
+	local_address = models.CharField('Endereço do Local de Internação', max_length=255, default=None, null=True, blank=True)
+	local_name = models.CharField('Nome do Contato do Local de Internação', max_length=255, default=None, null=True, blank=True)
+	local_phone = models.CharField('Telefone do Contato do Local de Internação', max_length=255, default=None, null=True, blank=True)
 	
 	medical_approved = models.BooleanField('Tem Aprovação Médica para a Realização do Sonho?', default=False)
 	parental_approved = models.BooleanField('Tem Aprovação do Responsável para a Realização do Sonho?', default=False)
 	
 	description = models.TextField('Descrição Detalhada do Sonho', default=None)
 	
-	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default=None, null=True)
-	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True)
-	planning_description = models.TextField('Planejamento do Sonho', default=None, null=True)
-	dream_needs = models.TextField('Necessidades do Sonho', default=None, null=True)
-	needs_attended = models.TextField('Necessidades Atendidas', default=None, null=True)
+	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default=None, null=True, blank=True)
+	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
+	planning_description = models.TextField('Planejamento do Sonho', default=None, null=True, blank=True)
+	dream_needs = models.TextField('Necessidades do Sonho', default=None, null=True, blank=True)
+	needs_attended = models.TextField('Necessidades Atendidas', default=None, null=True, blank=True)
 
 	class Meta:
 		# verbose_name = 'Gestão de Sonhos'
