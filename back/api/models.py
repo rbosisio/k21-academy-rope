@@ -44,6 +44,7 @@ class Dream(models.Model):
 	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True)
 	planning_description = models.TextField('Planejamento do Sonho', default=None, null=True)
 	dream_needs = models.TextField('Necessidades do Sonho', default=None, null=True)
+	needs_attended = models.TextField('Necessidades Atendidas', default=None, null=True)
 
 	class Meta:
 		# verbose_name = 'Gestão de Sonhos'
