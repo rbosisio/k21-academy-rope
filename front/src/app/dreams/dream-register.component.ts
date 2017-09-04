@@ -50,6 +50,8 @@ export class DreamRegisterComponent {
     let formObj = this.registerForm.getRawValue();
     let serializedForm = JSON.stringify(formObj);
   
+    console.log(formObj);
+
     setTimeout(function() {
         this.formSubmitted = false;
     }.bind(this), 5000);
