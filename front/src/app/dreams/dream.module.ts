@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DreamRegisterComponent } from "./dream-register.component";
+import { DreamListComponent } from './dream-list.component';
 
 @NgModule({
   imports: [
@@ -13,11 +14,13 @@ import { DreamRegisterComponent } from "./dream-register.component";
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forChild([
-      { path: 'cadastro', component: DreamRegisterComponent }  
+      { path: 'cadastro', component: DreamRegisterComponent },
+      { path: 'adote-um-sonho', component: DreamListComponent },
     ])
   ],
   declarations: [
-    DreamRegisterComponent
+    DreamRegisterComponent,
+    DreamListComponent
   ]
 })
 export class DreamModule { }
