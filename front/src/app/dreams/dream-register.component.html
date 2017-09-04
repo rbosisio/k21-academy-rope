@@ -8,12 +8,24 @@
 <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
     <div class="form-group row" >
       <div class="col-9">
-        <label>Nome<span class="text-danger">*</span></label>
-        <input formControlName="name" type="text" class="form-control" required >
+        <label>Nome do Sonhador<span class="text-danger">*</span></label>
+        <input formControlName="dreamer_name" type="text" class="form-control" required >
       </div>
       <div class="col-3">
-        <label>Idade<span class="text-danger">*</span></label>
-        <input formControlName="age" type="text" class="form-control" required >
+        <label>Idade do Sonhador<span class="text-danger">*</span></label>
+        <input formControlName="dreamer_age" type="text" class="form-control" required >
+      </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-12">
+          <label>Endereço do Sonhador<span class="text-danger">*</span></label>
+          <input formControlName="dreamer_address" type="text" class="form-control" >
+        </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-12">
+        <label>Condições médicas e expectativa de vida do sonhador <span class="text-danger">*</span></label>
+        <textarea formControlName="dreamer_health_conditions" class="form-control" rows="10"></textarea>
       </div>
     </div>
     <div class="form-group row">
@@ -24,22 +36,20 @@
     </div>
     <div class="form-group row">
       <div class="col-6">
-        <label>Email<span class="text-danger">*</span></label>
-        <input formControlName="email" type="email" class="form-control" placeholder="exemplo@email.com">
+        <label>E-mail do Contato<span class="text-danger">*</span></label>
+        <input formControlName="contact_email" type="email" class="form-control" placeholder="exemplo@email.com">
       </div>
       <div class="col-6">
-        <label>Telefone<span class="text-danger">*</span></label>
-        <input formControlName="phone" type="text" class="form-control" placeholder="(21) 99999-9999">
+        <label>Telefone do Contato<span class="text-danger">*</span></label>
+        <input formControlName="contact_phone" type="text" class="form-control" placeholder="(21) 99999-9999">
       </div>
     </div>
     <div class="form-group row">
       <div class="col-6">
-        <label>Endereço do sonhador<span class="text-danger">*</span></label>
-        <input formControlName="address" type="text" class="form-control">
+        <label>Relação com o sonhador<span class="text-danger">*</span></label>
+        <input formControlName="contact_liason" type="text" class="form-control">
       </div>
       <div class="col-6">
-        <label>Relação com o sonhador<span class="text-danger">*</span></label>
-        <input formControlName="liason" type="text" class="form-control">
       </div>
     </div>
     <div class="form-group row">
@@ -59,13 +69,23 @@
     </div>
     <div class="form-group row">
         <div class="col-6">
-          <label>Nome da Instituição</label>
-          <input formControlName="hospital_name" type="text" class="form-control">
+          <label>Nome da Instituição onde está internado</label>
+          <input formControlName="local" type="text" class="form-control">
         </div>
         <div class="col-6">
-          <label>Contato da Instituição</label>
-          <input formControlName="hospital_contact" type="text" class="form-control">
+          <label>Endereço do Local de Internação</label>
+          <input formControlName="local_address" type="text" class="form-control">
         </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-6">
+        <label>Nome do Contato do Local de Internação</label>
+        <input formControlName="local_name" type="text" class="form-control">
+      </div>
+      <div class="col-6">
+        <label>Telefone do Contato do Local de Internação</label>
+        <input formControlName="local_phone" type="text" class="form-control">
+      </div>
     </div>
     <div class="form-group row">
       <div class="col-12">
@@ -98,19 +118,9 @@
       </div>
     </div>
     <div class="form-group row">
-      <div class="col-6">
-        <label>Descrição do sonho <span class="text-danger">*</span></label>
-        <textarea formControlName="description" class="form-control" rows="10"></textarea>
-      </div>
-      <div class="col-6">
-        <label>Um breve relato sobre o sonho <span class="text-danger">*</span></label>
-        <textarea formControlName="dream_report" class="form-control" rows="10"></textarea>
-      </div>
-    </div>
-    <div class="form-group row">
       <div class="col-12">
-        <label>Condições médicas e expectativa de vida do sonhador <span class="text-danger">*</span></label>
-        <textarea formControlName="health_conditions" class="form-control" rows="10"></textarea>
+        <label>Descrição detalhada do sonho<span class="text-danger">*</span></label>
+        <textarea formControlName="description" class="form-control" rows="10"></textarea>
       </div>
     </div>
     <div class="form-group row">
