@@ -26,4 +26,8 @@ export class DreamListComponent implements OnInit {
     }); 
   }
 
+  // handleClick():void {
+  // 	console.log('aqui');
+  // }
+
 }

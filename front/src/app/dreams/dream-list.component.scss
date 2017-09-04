@@ -6,34 +6,42 @@ header.logo-title{
 
 li {
 	list-style-type: none;
-
-	.button {
-		display: block;
-		border:none;
-		background-color: #92609f;
-		color: #fff;
-		width: 100%;
-    	cursor: pointer;
-    	outline: none;
-    	&:hover {
-    		background-color: lighten(#92609f, 5%);
-    	}
-	}
 }
 
 article.dream {
-	background-color: #fef3e1;
+	margin-bottom: 35px;
 
 	.content {
 		width: 100%;
+		background-color: #fef3e1;
+		padding: 20px;
 		color: #92609f;
 	}
 	.title {
+		margin-bottom: 20px;
 	}
 	.public-description {
 
 	}
 	.aux-text {
 
+	}
+	.button {
+		display: block;
+		border:none;
+		background-color: #92609f;
+		color: #fff;
+		width: 100%;
+    	padding: 8px;
+    	cursor: pointer;
+    	outline: none;
+    	&:hover {
+    		background-color: lighten(#92609f, 5%);
+    	}
+
+    	i {
+    		margin-left: 5px;
+    		font-size: 15px;
+    	}
 	}
 }
