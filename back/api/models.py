@@ -72,16 +72,16 @@ class Dream(models.Model):
 
 	spendings = models.TextField('Valores gastos', default=None, null=True, blank=True)
 
-	dream_nickname = models.CharField('Apelido do sonho', max_length=255, default=None, null=True, blank=True)
-	dream_short_description = models.TextField('Descrição rápida do sonho para página aberta', default=None, null=True, blank=True)
-	
 	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default='sonho_ir', null=True, blank=True)
 	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 	planning_description = models.TextField('Planejamento do Sonho', default=None, null=True, blank=True)
 	
 	observations = models.TextField('Mais alguma informação importante (Restrição alimentar, autonomia pra ir ao banheiro, etc)', default=None, null=True, blank=True)
 	
-	dream_needs = models.TextField('Necessidades do Sonho', default=None, null=True, blank=True)
+	dream_nickname = models.CharField('Apelido do sonho (Esse campo será publicado)', max_length=255, default=None, null=True, blank=True)
+	dream_short_description = models.TextField('Descrição rápida do sonho para página aberta (Esse campo será publicado)', default=None, null=True, blank=True)
+	
+	dream_needs = models.TextField('Necessidades do Sonho (Esse campo será publicado)', default=None, null=True, blank=True)
 	needs_attended = models.TextField('Necessidades Atendidas', default=None, null=True, blank=True)
 
 	class Meta:
