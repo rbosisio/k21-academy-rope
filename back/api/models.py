@@ -56,7 +56,7 @@ class Dream(models.Model):
         ('cadeira_rodas', 'Cadeira de rodas'),
         ('acamado', 'acamado'),
     )
-	mobility = models.CharField('Como é a mobilidade do sonhador?', max_length=255, choices=MOBILITY, default=None, null=True, blank=True)
+	mobility = models.CharField('Como é a mobilidade do sonhador?', max_length=255, choices=MOBILITY, default='caminha_sozinho', null=True, blank=True)
 
 	doctor_name = models.CharField('Médico responsável', max_length=255, default=None, null=True, blank=True)
 	doctor_contact = models.CharField('Contato do médico', max_length=255, default=None, null=True, blank=True)
@@ -75,7 +75,7 @@ class Dream(models.Model):
 	dream_nickname = models.CharField('Apelido do sonho', max_length=255, default=None, null=True, blank=True)
 	dream_short_description = models.TextField('Descrição rápida do sonho para página aberta', default=None, null=True, blank=True)
 	
-	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default=None, null=True, blank=True)
+	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default='sonho_ir', null=True, blank=True)
 	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 	planning_description = models.TextField('Planejamento do Sonho', default=None, null=True, blank=True)
 	
@@ -121,15 +121,15 @@ class AvailableDaysTimes(models.Model):
 		
 
 class Volunteer(models.Model):
-	name = models.CharField('Nome', max_length=255, default=None)
-	nickname = models.CharField('Apelido', max_length=255, default=None)
-	birthdate = models.DateField('Data de nascimento', default=None)
-	telephone = models.CharField('Telefone', max_length=255, default=None)
-	cellphone = models.CharField('Celular', max_length=255, default=None)
-	email = models.CharField('Email', max_length=255, default=None)
-	address = models.CharField('Endereço ', max_length=255, default=None)
-	personal_characteristics = models.TextField('Características pessoais', default=None)
-	talents = models.TextField('Talentos', default=None)
+	name = models.CharField('Nome', max_length=255, default=None, null=True, blank=True)
+	nickname = models.CharField('Apelido', max_length=255, default=None, null=True, blank=True)
+	birthdate = models.DateField('Data de nascimento', default=None, null=True, blank=True)
+	telephone = models.CharField('Telefone', max_length=255, default=None, null=True, blank=True)
+	cellphone = models.CharField('Celular', max_length=255, default=None, null=True, blank=True)
+	email = models.CharField('Email', max_length=255, default=None, null=True, blank=True)
+	address = models.CharField('Endereço ', max_length=255, default=None, null=True, blank=True)
+	personal_characteristics = models.TextField('Características pessoais', default=None, null=True, blank=True)
+	talents = models.TextField('Talentos', default=None, null=True, blank=True)
 
 	available_days_times = models.ManyToManyField(AvailableDaysTimes)
 
@@ -138,7 +138,7 @@ class Volunteer(models.Model):
         ('farm', 'Farm'),
         ('reg', 'REG')
     )
-	assignment = models.CharField('Designação do voluntário ', max_length=20, choices=ASSIGNMENTS)
+	assignment = models.CharField('Designação do voluntário ', max_length=20, choices=ASSIGNMENTS, default='hunter', null=True, blank=True)
 
 	STATUS = (
         ('novo', 'Novo'),
@@ -146,7 +146,7 @@ class Volunteer(models.Model):
         ('reprovado', 'Reprovado')
     )
 
-	status = models.CharField('Status ', max_length=20, choices=STATUS, default=None)
+	status = models.CharField('Status ', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 
 	class Meta:
 		verbose_name_plural = 'Voluntários'
@@ -160,28 +160,28 @@ class Partner(models.Model):
         ('pf', 'Pessoa Física'),
         ('pj', 'Pessoa Jurídica'),
     )
-	document_type = models.CharField('Opção de pessoa', max_length=20, choices=DOCUMENT_TYPE)
+	document_type = models.CharField('Opção de pessoa', max_length=20, choices=DOCUMENT_TYPE, default='pf')
 	
-	contact_name = models.CharField('Nome do contato', max_length=255, default=None, null=True)
-	document = models.CharField('Documento', max_length=255, default=None, null=True)
-	telephone = models.CharField('Telefone', max_length=255, default=None)
-	cellphone = models.CharField('Celular', max_length=255, default=None)
-	address = models.CharField('Endereço ', max_length=255, default=None)
+	contact_name = models.CharField('Nome do contato', max_length=255, default=None, null=True, blank=True)
+	document = models.CharField('Documento', max_length=255, default=None, null=True, blank=True)
+	telephone = models.CharField('Telefone', max_length=255, default=None, null=True, blank=True)
+	cellphone = models.CharField('Celular', max_length=255, default=None, null=True, blank=True)
+	address = models.CharField('Endereço ', max_length=255, default=None, null=True, blank=True)
 
 	has_specific_dream = models.BooleanField('Tem sonho específico?', default=False)
 	money_help = models.BooleanField('Ajuda com dinheiro?', default=False)
 	service_help = models.BooleanField('Ajuda com seviço?', default=False)
 
-	help_description = models.TextField('Descrição da ajuda', default=None)
+	help_description = models.TextField('Descrição da ajuda', default=None, null=True, blank=True)
 
-	observation = models.TextField('Observações (Especificar doação)', default=None)
+	observation = models.TextField('Observações (Especificar doação)', default=None, null=True, blank=True)
 
 	STATUS = (
         ('novo', 'Novo'),
         ('aprovado', 'Aprovado'),
         ('reprovado', 'Reprovado')
     )
-	status = models.CharField('Designação do voluntário ', max_length=20, choices=STATUS, default=None)
+	status = models.CharField('Designação do voluntário ', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 	
 	available_days_times = models.ManyToManyField(AvailableDaysTimes)
 
