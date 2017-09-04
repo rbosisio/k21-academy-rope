@@ -1,9 +1,10 @@
-version: '3'
+version: '2'
 services:
   apache:
-    image: "httpd:2.4"
+    build: "../front/"
     volumes:
-      - "../front/dist:/usr/local/apache2/htdocs/"
+      - "./apache/www:/var/www/"
+      - "./apache/conf:/etc/apache2/sites-enabled/"
     ports:
      - "80:80"
   gunicorn:
@@ -12,3 +13,11 @@ services:
       - "../back/:/app/"
     ports:
      - "8000:8000"
+  mysql:
+    image: "mysql"
+    volumes:
+      - "./mysql:/var/lib/mysql"
+    ports:
+     - "3306:3306"
+    environment:
+       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
