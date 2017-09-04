@@ -39,7 +39,7 @@ class Dream(models.Model):
 	
 	description = models.TextField('Descrição Detalhada do Sonho', default=None, null=True, blank=True)
 	
-	# ====== Administrative fields ====== #
+	# ====================================================== Administrative fields ====================================================== #
 
 	dreamer_nickname = models.CharField('Apelido do sonhador', max_length=255, default=None, null=True, blank=True)
 
@@ -72,7 +72,9 @@ class Dream(models.Model):
 
 	spendings = models.TextField('Valores gastos', default=None, null=True, blank=True)
 
-	dream_short_description = models.TextField('Apelido do sonho (descrição curta)', default=None, null=True, blank=True)
+	dream_nickname = models.CharField('Apelido do sonho', max_length=255, default=None, null=True, blank=True)
+	dream_short_description = models.TextField('Descrição rápida do sonho para página aberta', default=None, null=True, blank=True)
+	
 	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default=None, null=True, blank=True)
 	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 	planning_description = models.TextField('Planejamento do Sonho', default=None, null=True, blank=True)
