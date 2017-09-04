@@ -12,4 +12,8 @@ export class DreamListComponent implements OnInit {
   ngOnInit() {
   }
 
+  // handleClick():void {
+  // 	console.log('aqui');
+  // }
+
 }

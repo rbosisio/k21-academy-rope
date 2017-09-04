@@ -38,5 +38,10 @@ article.dream {
     	&:hover {
     		background-color: lighten(#92609f, 5%);
     	}
+
+    	i {
+    		margin-left: 5px;
+    		font-size: 15px;
+    	}
 	}
 }
