@@ -9,10 +9,15 @@ import { Http } from '@angular/http';
 })
 export class DreamRegisterComponent {
   
-  //registerDreamUrl: string = "http://sonhos.institutorope.com.br:8000/api/dreams/";
-  registerDreamUrl: string = "http://localhost:8000/api/dreams/";
+  registerDreamUrl: string = "http://sonhos.institutorope.com.br:8000/api/dreams/";
+  //registerDreamUrl: string = "http://localhost:8000/api/dreams/";
   
+  fieldsRequiredMessage: string = "Preecha todos os campos obrigatórios.";
+  errorMessage: string = "Ocorreu um erro no cadastro do sonho. Por favor tente novamente ou entre em contanto conosco.";
+  successMessage: string = "Sonho cadastrado com sucesso! Entraremos em contato em breve!";
+
   formSubmitted: boolean = false;
+  success: boolean = false;
   registerFormFieldValid: {} = {};
   registerForm:FormGroup = new FormGroup({
     dreamer_name: new FormControl('', Validators.required),
@@ -31,8 +36,8 @@ export class DreamRegisterComponent {
     medical_approved: new FormControl(false, Validators.required),
     parental_approved: new FormControl(false, Validators.required),
     description: new FormControl('', Validators.required),
-    planning_description: new FormControl('', Validators.required),
-    dream_needs: new FormControl('', Validators.required),
+    planning_description: new FormControl(''),
+    dream_needs: new FormControl(''),
     needs_attended: new FormControl(''),
     status: new FormControl(),
     category: new FormControl()
@@ -45,13 +50,24 @@ export class DreamRegisterComponent {
     let formObj = this.registerForm.getRawValue();
     let serializedForm = JSON.stringify(formObj);
   
-    console.log(formObj);
+    setTimeout(function() {
+        this.formSubmitted = false;
+    }.bind(this), 5000);
+    window.scrollTo(0,0);
 
-    this.http.post(this.registerDreamUrl, serializedForm)
-    .subscribe(
-        data => console.log("success!", data),
-        error => console.error("couldn't post because", error)
-    );
+    if(this.registerForm.valid){
+      this.http.post(this.registerDreamUrl, serializedForm)
+      .subscribe(
+          data => {
+            console.log("success!", data);
+            this.success = true;
+          },
+          error => {
+            this.success = false;
+            console.error("couldn't post because", error);
+          }
+      );
+    }
   } 
 
 }
