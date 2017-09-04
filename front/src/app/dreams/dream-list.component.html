@@ -1,16 +1,27 @@
 <header class="logo-title my-3" ></header>
-<section class="form-group row" >
+<section class="form-group" >
 
-	<ul class="col-12" *ngIf='dreams'>
-		<li *ngFor='let dream of dreams'>
-			<article class="dream">
-				<div class="content">
-					<h3 class="title">“ {{dream.dream_nickname}} ”</h3>
+	<ul *ngIf='dreams'>
+		<li *ngFor='let dream of dreams' class="mb-4">
+			<article class="dream row p-4">
+				<div class="content col-12">
+					<h3 class="my-4">“ {{dream.dream_nickname}} ”</h3>
+				</div>
+				<div class="content col-6">
+					<h4>Sonho</h4>
 					<p class="public-description">{{dream.dream_short_description}}</p>
+				</div>
+				<div class="content col-6">
+					<h4>O que é necessário para que ele seja realizado</h4>
+					<p class="public-description">{{dream.dream_needs}}</p>
+				</div>
+				<div class="content col-12">
 					<span class="aux-text">Podemos contar com você?</span>
 				</div>
-				<button class="button">Detalhes do Sonho</button>
 			</article>
+			<div class="row">
+				<button class="button py-2">Detalhes do Sonho</button>
+			</div>
 		</li>
 	</ul>
 		
