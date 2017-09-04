@@ -4,91 +4,6 @@ from django.db import models
 
 # Create your models here.
 
-class Dream(models.Model):
-
-	STATUS = (
-        ('novo', 'Novo'),
-        ('inviavel', 'Inviavel'),
-        ('aprovado', 'Aprovado'),
-    )
-
-	CATEGORY = (
-        ('sonho_ir', 'Sonho Ir'),
-        ('sonho_fazer', 'Sonho Fazer'),
-        ('sonho_conhecer_rever', 'Sonho Conhecer / Rever'),
-    )
-
-	dreamer_name = models.CharField('Nome do Sonhador', max_length=255, default=None, null=True, blank=True)
-	dreamer_age = models.CharField('Idade do Sonhador', max_length=255, default=None, null=True, blank=True)
-	dreamer_address = models.CharField('Endereço do Sonhador', max_length=255, default=None, null=True, blank=True)
-	dreamer_health_conditions = models.TextField('Condições Médicas e Expectativa de Vida', default=None, null=True, blank=True)
-	
-	contact_name = models.CharField('Nome do Contato', max_length=255, default=None, null=True, blank=True)
-	contact_email = models.CharField('E-mail do Contato', max_length=255, default=None, null=True, blank=True)
-	contact_phone = models.CharField('Telefone do Contato', max_length=255, default=None, null=True, blank=True)
-	contact_liason = models.CharField('Relacionamento com Sonhador (Ex. filho, cuidador)', max_length=255, default=None, null=True, blank=True)
-	
-	inmate = models.BooleanField('Está Internado?', default=False)
-	local = models.CharField('Local de Internação', max_length=255, default=None, null=True, blank=True)
-	local_address = models.CharField('Endereço do Local de Internação', max_length=255, default=None, null=True, blank=True)
-	local_name = models.CharField('Nome do Contato do Local de Internação', max_length=255, default=None, null=True, blank=True)
-	local_phone = models.CharField('Telefone do Contato do Local de Internação', max_length=255, default=None, null=True, blank=True)
-	
-	medical_approved = models.BooleanField('Tem Aprovação Médica para a Realização do Sonho?', default=False)
-	parental_approved = models.BooleanField('Tem Aprovação do Responsável para a Realização do Sonho?', default=False)
-	
-	description = models.TextField('Descrição Detalhada do Sonho', default=None, null=True, blank=True)
-	
-	# ====================================================== Administrative fields ====================================================== #
-
-	dreamer_nickname = models.CharField('Apelido do sonhador', max_length=255, default=None, null=True, blank=True)
-
-	significative_days = models.CharField('Data importante pro sonho, caso exista', max_length=255, default=None, null=True, blank=True)
-	impediment_days = models.TextField('Dias no qual o sonho não pode ser realizado (Dias de tratamento, etc)', default=None, null=True, blank=True)
-	mental_health = models.CharField('Condição mental do sonhador', max_length=255, default=None, null=True, blank=True)
-
-	uses_health_device = models.BooleanField('Sonhador usa algum dispositivo?', default=False)
-	health_device_description = models.TextField('Descreva o dispositivo', default=None, null=True, blank=True)
-
-	MOBILITY = (
-        ('caminha_sozinho', 'Caminha sozinho'),
-        ('caminha_auxiliado', 'Caminha com auxilio'),
-        ('cadeira_rodas', 'Cadeira de rodas'),
-        ('acamado', 'acamado'),
-    )
-	mobility = models.CharField('Como é a mobilidade do sonhador?', max_length=255, choices=MOBILITY, default='caminha_sozinho', null=True, blank=True)
-
-	doctor_name = models.CharField('Médico responsável', max_length=255, default=None, null=True, blank=True)
-	doctor_contact = models.CharField('Contato do médico', max_length=255, default=None, null=True, blank=True)
-
-	how_did_know_us = models.TextField('Como soube do trabalho da Rope', default=None, null=True, blank=True)
-	
-	linked_partners = models.TextField('Parceiros', default=None, null=True, blank=True)
-	linked_volunteers = models.TextField('Voluntários', default=None, null=True, blank=True)
-	linked_transport = models.TextField('Transporte', default=None, null=True, blank=True)
-	linked_food = models.TextField('Alimentação', default=None, null=True, blank=True)
-
-	special_care = models.TextField('Cuidados especiais (banheiro, alimentação e locomoção)', default=None, null=True, blank=True)
-
-	spendings = models.TextField('Valores gastos', default=None, null=True, blank=True)
-
-	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default='sonho_ir', null=True, blank=True)
-	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
-	planning_description = models.TextField('Planejamento do Sonho', default=None, null=True, blank=True)
-	
-	observations = models.TextField('Mais alguma informação importante (Restrição alimentar, autonomia pra ir ao banheiro, etc)', default=None, null=True, blank=True)
-	
-	dream_nickname = models.CharField('Apelido do sonho (Esse campo será publicado)', max_length=255, default=None, null=True, blank=True)
-	dream_short_description = models.TextField('Descrição rápida do sonho para página aberta (Esse campo será publicado)', default=None, null=True, blank=True)
-	
-	dream_needs = models.TextField('Necessidades do Sonho (Esse campo será publicado)', default=None, null=True, blank=True)
-	needs_attended = models.TextField('Necessidades Atendidas', default=None, null=True, blank=True)
-
-	class Meta:
-		verbose_name_plural = 'Sonhos'
-
-# ================================================================================================================================= #
-
 class AvailableDaysTimes(models.Model):
 	DAYS = (
         ('seg', 'Segunda'),
@@ -148,6 +63,9 @@ class Volunteer(models.Model):
 
 	status = models.CharField('Status ', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 
+	def __str__(self):
+		return self.name
+
 	class Meta:
 		verbose_name_plural = 'Voluntários'
 
@@ -185,5 +103,97 @@ class Partner(models.Model):
 	
 	available_days_times = models.ManyToManyField(AvailableDaysTimes)
 
+	def __str__(self):
+		return self.name
+
 	class Meta:
 		verbose_name_plural = 'Parceiros'
+
+# ================================================================================================================================= #
+
+class Dream(models.Model):
+
+	STATUS = (
+        ('novo', 'Novo'),
+        ('inviavel', 'Inviavel'),
+        ('aprovado', 'Aprovado'),
+        ('realizado', 'Realizado')
+    )
+
+	CATEGORY = (
+        ('sonho_ir', 'Sonho Ir'),
+        ('sonho_fazer', 'Sonho Fazer'),
+        ('sonho_conhecer_rever', 'Sonho Conhecer / Rever'),
+    )
+
+	dreamer_name = models.CharField('Nome do Sonhador', max_length=255, default=None, null=True, blank=True)
+	dreamer_age = models.CharField('Idade do Sonhador', max_length=255, default=None, null=True, blank=True)
+	dreamer_address = models.CharField('Endereço do Sonhador', max_length=255, default=None, null=True, blank=True)
+	dreamer_health_conditions = models.TextField('Condições Médicas e Expectativa de Vida', default=None, null=True, blank=True)
+	
+	contact_name = models.CharField('Nome do Contato', max_length=255, default=None, null=True, blank=True)
+	contact_email = models.CharField('E-mail do Contato', max_length=255, default=None, null=True, blank=True)
+	contact_phone = models.CharField('Telefone do Contato', max_length=255, default=None, null=True, blank=True)
+	contact_liason = models.CharField('Relacionamento com Sonhador (Ex. filho, cuidador)', max_length=255, default=None, null=True, blank=True)
+	
+	inmate = models.BooleanField('Está Internado?', default=False)
+	local = models.CharField('Local de Internação', max_length=255, default=None, null=True, blank=True)
+	local_address = models.CharField('Endereço do Local de Internação', max_length=255, default=None, null=True, blank=True)
+	local_name = models.CharField('Nome do Contato do Local de Internação', max_length=255, default=None, null=True, blank=True)
+	local_phone = models.CharField('Telefone do Contato do Local de Internação', max_length=255, default=None, null=True, blank=True)
+	
+	medical_approved = models.BooleanField('Tem Aprovação Médica para a Realização do Sonho?', default=False)
+	parental_approved = models.BooleanField('Tem Aprovação do Responsável para a Realização do Sonho?', default=False)
+	
+	description = models.TextField('Descrição Detalhada do Sonho', default=None, null=True, blank=True)
+	
+	# ====================================================== Administrative fields ====================================================== #
+
+	dreamer_nickname = models.CharField('Apelido do sonhador', max_length=255, default=None, null=True, blank=True)
+
+	significative_days = models.CharField('Data importante pro sonho, caso exista', max_length=255, default=None, null=True, blank=True)
+	impediment_days = models.TextField('Dias no qual o sonho não pode ser realizado (Dias de tratamento, etc)', default=None, null=True, blank=True)
+	mental_health = models.CharField('Condição mental do sonhador', max_length=255, default=None, null=True, blank=True)
+
+	uses_health_device = models.BooleanField('Sonhador usa algum dispositivo?', default=False)
+	health_device_description = models.TextField('Descreva o dispositivo', default=None, null=True, blank=True)
+
+	MOBILITY = (
+        ('caminha_sozinho', 'Caminha sozinho'),
+        ('caminha_auxiliado', 'Caminha com auxilio'),
+        ('cadeira_rodas', 'Cadeira de rodas'),
+        ('acamado', 'acamado'),
+    )
+	mobility = models.CharField('Como é a mobilidade do sonhador?', max_length=255, choices=MOBILITY, default='caminha_sozinho', null=True, blank=True)
+
+	doctor_name = models.CharField('Médico responsável', max_length=255, default=None, null=True, blank=True)
+	doctor_contact = models.CharField('Contato do médico', max_length=255, default=None, null=True, blank=True)
+
+	how_did_know_us = models.TextField('Como soube do trabalho da Rope', default=None, null=True, blank=True)
+	
+	linked_partners = models.ManyToManyField(Partner, default=None, null=True, blank=True)
+	linked_volunteers = models.ManyToManyField(Volunteer, default=None, null=True, blank=True)
+	linked_transport = models.TextField('Transporte', default=None, null=True, blank=True)
+	linked_food = models.TextField('Alimentação', default=None, null=True, blank=True)
+
+	special_care = models.TextField('Cuidados especiais (banheiro, alimentação e locomoção)', default=None, null=True, blank=True)
+
+	spendings = models.TextField('Valores gastos', default=None, null=True, blank=True)
+
+	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default='sonho_ir', null=True, blank=True)
+	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
+	planning_description = models.TextField('Planejamento do Sonho', default=None, null=True, blank=True)
+	
+	observations = models.TextField('Mais alguma informação importante (Restrição alimentar, autonomia pra ir ao banheiro, etc)', default=None, null=True, blank=True)
+	
+	dream_nickname = models.CharField('Apelido do sonho (Esse campo será publicado)', max_length=255, default=None, null=True, blank=True)
+	dream_short_description = models.TextField('Descrição rápida do sonho para página aberta (Esse campo será publicado)', default=None, null=True, blank=True)
+	
+	dream_needs = models.TextField('Necessidades do Sonho (Esse campo será publicado)', default=None, null=True, blank=True)
+	needs_attended = models.TextField('Necessidades Atendidas', default=None, null=True, blank=True)
+
+	class Meta:
+		verbose_name_plural = 'Sonhos'
+
+# ================================================================================================================================= #
+
