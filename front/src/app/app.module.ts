@@ -7,6 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { DreamModule } from "./dreams/dream.module";
+import { VoluntaryModule } from "./voluntaries/voluntary.module";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DreamModule } from "./dreams/dream.module";
       { path: '', redirectTo: 'welcome', pathMatch: 'full'},
       { path: '**', redirectTo: 'welcome', pathMatch: 'full'}
     ]),
-    DreamModule
+    DreamModule,
+    VoluntaryModule
   ],
   providers: [],
   bootstrap: [AppComponent]

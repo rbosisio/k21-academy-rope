@@ -1,0 +1,14 @@
+version: '3'
+services:
+  apache:
+    image: "httpd:2.4"
+    volumes:
+      - "../front/dist:/usr/local/apache2/htdocs/"
+    ports:
+     - "80:80"
+  gunicorn:
+    build: "../back/"
+    volumes:
+      - "../back/:/app/"
+    ports:
+     - "8000:8000"
