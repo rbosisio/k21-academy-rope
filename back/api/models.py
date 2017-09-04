@@ -47,7 +47,6 @@ class Dream(models.Model):
 	needs_attended = models.TextField('Necessidades Atendidas', default=None, null=True, blank=True)
 
 	class Meta:
-		# verbose_name = 'Gestão de Sonhos'
 		verbose_name_plural = 'Sonhos'
 
 # ================================================================================================================================= #
@@ -80,6 +79,8 @@ class AvailableDaysTimes(models.Model):
 
 	class Meta:
 		ordering = ('order',)
+		verbose_name_plural = 'Dias / Horários Disponíveis'
+		
 
 class Volunteer(models.Model):
 	name = models.CharField('Nome', max_length=255, default=None)
@@ -108,6 +109,9 @@ class Volunteer(models.Model):
     )
 
 	status = models.CharField('Status ', max_length=20, choices=STATUS, default=None)
+
+	class Meta:
+		verbose_name_plural = 'Voluntários'
 
 # ================================================================================================================================= #
 
@@ -142,3 +146,6 @@ class Partner(models.Model):
 	status = models.CharField('Designação do voluntário ', max_length=20, choices=STATUS, default=None)
 	
 	available_days_times = models.ManyToManyField(AvailableDaysTimes)
+
+	class Meta:
+		verbose_name_plural = 'Parceiros'
