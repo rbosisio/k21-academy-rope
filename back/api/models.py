@@ -9,7 +9,7 @@ class Dream(models.Model):
 	STATUS = (
         ('novo', 'Novo'),
         ('inviavel', 'Inviavel'),
-        ('pre_aprovado', 'Pré-Aprovado'),
+        ('aprovado', 'Aprovado'),
     )
 
 	CATEGORY = (
@@ -41,9 +41,44 @@ class Dream(models.Model):
 	
 	# ====== Administrative fields ====== #
 
+	dreamer_nickname = models.CharField('Apelido do sonhador', max_length=255, default=None, null=True, blank=True)
+
+	significative_days = models.CharField('Data importante pro sonho, caso exista', max_length=255, default=None, null=True, blank=True)
+	impediment_days = models.TextField('Dias no qual o sonho não pode ser realizado (Dias de tratamento, etc)', default=None, null=True, blank=True)
+	mental_health = models.CharField('Condição mental do sonhador', max_length=255, default=None, null=True, blank=True)
+
+	uses_health_device = models.BooleanField('Sonhador usa algum dispositivo?', default=False)
+	health_device_description = models.TextField('Descreva o dispositivo', default=None, null=True, blank=True)
+
+	MOBILITY = (
+        ('caminha_sozinho', 'Caminha sozinho'),
+        ('caminha_auxiliado', 'Caminha com auxilio'),
+        ('cadeira_rodas', 'Cadeira de rodas'),
+        ('acamado', 'acamado'),
+    )
+	mobility = models.CharField('Como é a mobilidade do sonhador?', max_length=255, choices=MOBILITY, default=None, null=True, blank=True)
+
+	doctor_name = models.CharField('Médico responsável', max_length=255, default=None, null=True, blank=True)
+	doctor_contact = models.CharField('Contato do médico', max_length=255, default=None, null=True, blank=True)
+
+	how_did_know_us = models.TextField('Como soube do trabalho da Rope', default=None, null=True, blank=True)
+	
+	linked_partners = models.TextField('Parceiros', default=None, null=True, blank=True)
+	linked_volunteers = models.TextField('Voluntários', default=None, null=True, blank=True)
+	linked_transport = models.TextField('Transporte', default=None, null=True, blank=True)
+	linked_food = models.TextField('Alimentação', default=None, null=True, blank=True)
+
+	special_care = models.TextField('Cuidados especiais (banheiro, alimentação e locomoção)', default=None, null=True, blank=True)
+
+	spendings = models.TextField('Valores gastos', default=None, null=True, blank=True)
+
+	dream_short_description = models.TextField('Apelido do sonho (descrição curta)', default=None, null=True, blank=True)
 	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default=None, null=True, blank=True)
 	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 	planning_description = models.TextField('Planejamento do Sonho', default=None, null=True, blank=True)
+	
+	observations = models.TextField('Mais alguma informação importante (Restrição alimentar, autonomia pra ir ao banheiro, etc)', default=None, null=True, blank=True)
+	
 	dream_needs = models.TextField('Necessidades do Sonho', default=None, null=True, blank=True)
 	needs_attended = models.TextField('Necessidades Atendidas', default=None, null=True, blank=True)
 
