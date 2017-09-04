@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent implements OnInit {
-  logoUrl: string = './assets/images/logo-rope.jpg';
+  logoUrl: string = './assets/images/rope-logo.png';
   logoTitle: string = 'Instituto Rope'
 
   constructor() { }

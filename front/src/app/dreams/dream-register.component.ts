@@ -31,7 +31,8 @@ export class DreamRegisterComponent {
     observation: new FormControl('', Validators.required),
     planning_description: new FormControl('', Validators.required),
     health_conditions: new FormControl('', Validators.required),
-    dream_report: new FormControl('', Validators.required)
+    dream_report: new FormControl('', Validators.required),
+    status: new FormControl()
   });
 
   constructor(private http: Http) { }

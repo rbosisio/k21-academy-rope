@@ -1,8 +1,8 @@
-<h1 class="logo-title my-3" >Cadastrar Sonho</h1>
+<h1 class="logo-title my-3" ></h1>
 <div class="alert alert-danger" *ngIf="registerForm.invalid && formSubmitted">
   Preecha todos os campos obrigatórios.
 </div>
-<div class="alert alert-danger" *ngIf="registerForm.invalid && formSubmitted">
+<div class="alert alert-success" *ngIf="registerForm.invalid && formSubmitted">
   Sonho cadastrado com sucesso! Entraremos em contato em breve!
 </div>
 <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
