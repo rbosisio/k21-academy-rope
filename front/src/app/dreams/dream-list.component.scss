@@ -1,0 +1,42 @@
+header.logo-title{
+    background:url('../../assets/images/nossos-sonhos.png') no-repeat; 
+    background-size: 100%;
+    height:300px 
+}
+
+li {
+	list-style-type: none;
+}
+
+article.dream {
+	margin-bottom: 35px;
+
+	.content {
+		width: 100%;
+		background-color: #fef3e1;
+		padding: 20px;
+		color: #92609f;
+	}
+	.title {
+		margin-bottom: 20px;
+	}
+	.public-description {
+
+	}
+	.aux-text {
+
+	}
+	.button {
+		display: block;
+		border:none;
+		background-color: #92609f;
+		color: #fff;
+		width: 100%;
+    	padding: 8px;
+    	cursor: pointer;
+    	outline: none;
+    	&:hover {
+    		background-color: lighten(#92609f, 5%);
+    	}
+	}
+}
