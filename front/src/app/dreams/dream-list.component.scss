@@ -10,7 +10,7 @@ li {
 
 article.dream {
 	margin-bottom: 35px;
-	
+
 	.content {
 		width: 100%;
 		background-color: #fef3e1;
@@ -34,5 +34,9 @@ article.dream {
 		width: 100%;
     	padding: 8px;
     	cursor: pointer;
+    	outline: none;
+    	&:hover {
+    		background-color: lighten(#92609f, 5%);
+    	}
 	}
 }
