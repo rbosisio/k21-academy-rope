@@ -42,11 +42,6 @@ class ApiDreams(APIView):
 					medical_approved = body['medical_approved'],
 					parental_approved = body['parental_approved'],
 					description = body['description'],
-					category = body['category'],
-					status = body['status'],
-					planning_description = body['planning_description'],
-					dream_needs = body['dream_needs'],
-					needs_attended = body['needs_attended']
 				)
 			dream.save()
 		except Exception as e:

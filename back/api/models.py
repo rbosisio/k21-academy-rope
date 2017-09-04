@@ -39,6 +39,8 @@ class Dream(models.Model):
 	
 	description = models.TextField('Descrição Detalhada do Sonho', default=None, null=True, blank=True)
 	
+	# ====== Administrative fields ====== #
+
 	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default=None, null=True, blank=True)
 	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 	planning_description = models.TextField('Planejamento do Sonho', default=None, null=True, blank=True)
