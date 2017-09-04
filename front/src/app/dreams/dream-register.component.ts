@@ -9,40 +9,43 @@ import { Http } from '@angular/http';
 })
 export class DreamRegisterComponent {
   
-  registerDreamUrl: string = "http://sonhos.institutorope.com.br:8000/api/dreams/";
+  //registerDreamUrl: string = "http://sonhos.institutorope.com.br:8000/api/dreams/";
+  registerDreamUrl: string = "http://localhost:8000/api/dreams/";
   
   formSubmitted: boolean = false;
   registerFormFieldValid: {} = {};
   registerForm:FormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    age: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-    phone: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
+    dreamer_name: new FormControl('', Validators.required),
+    dreamer_age: new FormControl('', Validators.required),
+    dreamer_address: new FormControl('', Validators.required),
+    dreamer_health_conditions: new FormControl('', Validators.required),
     contact_name: new FormControl('', Validators.required),
-    liason: new FormControl('', Validators.required),
+    contact_email: new FormControl('', Validators.required),
+    contact_phone: new FormControl('', Validators.required),
+    contact_liason: new FormControl('', Validators.required),
     inmate: new FormControl(false, Validators.required),
-    hospital_name: new FormControl(),
-    hospital_contact: new FormControl(),
+    local: new FormControl(''),
+    local_name: new FormControl(''),
+    local_address: new FormControl(''),
+    local_phone: new FormControl(''),
     medical_approved: new FormControl(false, Validators.required),
     parental_approved: new FormControl(false, Validators.required),
     description: new FormControl('', Validators.required),
-    hospital_address: new FormControl('', Validators.required),
-    observation: new FormControl('', Validators.required),
     planning_description: new FormControl('', Validators.required),
-    health_conditions: new FormControl('', Validators.required),
-    dream_report: new FormControl('', Validators.required),
-    status: new FormControl()
+    dream_needs: new FormControl('', Validators.required),
+    needs_attended: new FormControl(''),
+    status: new FormControl(),
+    category: new FormControl()
   });
 
   constructor(private http: Http) { }
 
   onFormSubmit(): void {
     this.formSubmitted = true;
-
     let formObj = this.registerForm.getRawValue();
-
     let serializedForm = JSON.stringify(formObj);
+  
+    console.log(formObj);
 
     this.http.post(this.registerDreamUrl, serializedForm)
     .subscribe(
