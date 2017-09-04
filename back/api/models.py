@@ -13,21 +13,20 @@ class Dream(models.Model):
     )
 
 	CATEGORY = (
-		('sonho_ir', 'Sonho Ir'),
         ('sonho_ir', 'Sonho Ir'),
         ('sonho_fazer', 'Sonho Fazer'),
         ('sonho_conhecer_rever', 'Sonho Conhecer / Rever'),
     )
 
-	dreamer_name = models.CharField('Nome do Sonhador', max_length=255, default=None)
-	dreamer_age = models.CharField('Idade do Sonhador', max_length=255, default=None)
-	dreamer_address = models.CharField('Endereço do Sonhador', max_length=255, default=None)
-	dreamer_health_conditions = models.TextField('Condições Médicas e Expectativa de Vida', default=None)
+	dreamer_name = models.CharField('Nome do Sonhador', max_length=255, default=None, null=True, blank=True)
+	dreamer_age = models.CharField('Idade do Sonhador', max_length=255, default=None, null=True, blank=True)
+	dreamer_address = models.CharField('Endereço do Sonhador', max_length=255, default=None, null=True, blank=True)
+	dreamer_health_conditions = models.TextField('Condições Médicas e Expectativa de Vida', default=None, null=True, blank=True)
 	
-	contact_name = models.CharField('Nome do Contato', max_length=255, default=None)
-	contact_email = models.CharField('E-mail do Contato', max_length=255, default=None)
-	contact_phone = models.CharField('Telefone do Contato', max_length=255, default=None)
-	contact_liason = models.CharField('Relacionamento com Sonhador (Ex. filho, cuidador)', max_length=255, default=None)
+	contact_name = models.CharField('Nome do Contato', max_length=255, default=None, null=True, blank=True)
+	contact_email = models.CharField('E-mail do Contato', max_length=255, default=None, null=True, blank=True)
+	contact_phone = models.CharField('Telefone do Contato', max_length=255, default=None, null=True, blank=True)
+	contact_liason = models.CharField('Relacionamento com Sonhador (Ex. filho, cuidador)', max_length=255, default=None, null=True, blank=True)
 	
 	inmate = models.BooleanField('Está Internado?', default=False)
 	local = models.CharField('Local de Internação', max_length=255, default=None, null=True, blank=True)
@@ -38,8 +37,10 @@ class Dream(models.Model):
 	medical_approved = models.BooleanField('Tem Aprovação Médica para a Realização do Sonho?', default=False)
 	parental_approved = models.BooleanField('Tem Aprovação do Responsável para a Realização do Sonho?', default=False)
 	
-	description = models.TextField('Descrição Detalhada do Sonho', default=None)
+	description = models.TextField('Descrição Detalhada do Sonho', default=None, null=True, blank=True)
 	
+	# ====== Administrative fields ====== #
+
 	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default=None, null=True, blank=True)
 	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 	planning_description = models.TextField('Planejamento do Sonho', default=None, null=True, blank=True)
@@ -47,7 +48,6 @@ class Dream(models.Model):
 	needs_attended = models.TextField('Necessidades Atendidas', default=None, null=True, blank=True)
 
 	class Meta:
-		# verbose_name = 'Gestão de Sonhos'
 		verbose_name_plural = 'Sonhos'
 
 # ================================================================================================================================= #
@@ -80,6 +80,8 @@ class AvailableDaysTimes(models.Model):
 
 	class Meta:
 		ordering = ('order',)
+		verbose_name_plural = 'Dias / Horários Disponíveis'
+		
 
 class Volunteer(models.Model):
 	name = models.CharField('Nome', max_length=255, default=None)
@@ -108,6 +110,9 @@ class Volunteer(models.Model):
     )
 
 	status = models.CharField('Status ', max_length=20, choices=STATUS, default=None)
+
+	class Meta:
+		verbose_name_plural = 'Voluntários'
 
 # ================================================================================================================================= #
 
@@ -142,3 +147,6 @@ class Partner(models.Model):
 	status = models.CharField('Designação do voluntário ', max_length=20, choices=STATUS, default=None)
 	
 	available_days_times = models.ManyToManyField(AvailableDaysTimes)
+
+	class Meta:
+		verbose_name_plural = 'Parceiros'

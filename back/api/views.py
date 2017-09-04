@@ -26,25 +26,22 @@ class ApiDreams(APIView):
 		dream = None
 		try:
 			dream = Dream(
-					name=body['name'],
-					age=body['age'],
-					email=body['email'],
-					address=body['address'],
-					phone=body['phone'],
-					inmate=body['inmate'],
-					hospital_name=body['hospital_name'],
-					hospital_contact=body['hospital_contact'],
-					medical_approved=body['medical_approved'],
-					parental_approved=body['parental_approved'],
-					description=body['description'],
-					hospital_address=body['hospital_address'],
-					observation=body['observation'],
-					liason=body['liason'],
-					status=body['status'],
-					planning_description=body['planning_description'],
-					health_conditions=body['health_conditions'],
-					contact_name=body['contact_name'],
-					dream_report=body['dream_report']
+					dreamer_name = body['dreamer_name'],
+					dreamer_age = body['dreamer_age'],
+					dreamer_address = body['dreamer_address'],
+					dreamer_health_conditions = body['dreamer_health_conditions'],
+					contact_name = body['contact_name'],
+					contact_email = body['contact_email'],
+					contact_phone = body['contact_phone'],
+					contact_liason = body['contact_liason'],
+					inmate = body['inmate'],
+					local = body['local'],
+					local_address = body['local_address'],
+					local_name = body['local_name'],
+					local_phone = body['local_phone'],
+					medical_approved = body['medical_approved'],
+					parental_approved = body['parental_approved'],
+					description = body['description'],
 				)
 			dream.save()
 		except Exception as e:

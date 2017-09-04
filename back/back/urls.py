@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+# Change the Django Admin header
+admin.site.site_header = 'Instituto ROPE'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
