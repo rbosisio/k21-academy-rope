@@ -13,11 +13,19 @@ class ApiDreams(APIView):
 
 	renderer_classes = (JSONRenderer, )
 
-	def get(self,request, id=None):
-		if id:
-			response = serializers.serialize("json",[Dream.objects.get(pk=id),])
-		else:
-			response = serializers.serialize("json",Dream.objects.all())
+	def get(self,request, id=None, status=None):
+		try:
+			if id:
+				response = serializers.serialize("json",[Dream.objects.get(pk=id),])
+			elif status:
+				result = Dream.objects.filter(status=str(status))
+				response = serializers.serialize("json", result)
+			else:
+				response = serializers.serialize("json",Dream.objects.all())
+			pass
+		except Exception as e:
+			print(str(e))
+			response = serializers.serialize("json",[])
 		return Response(json.loads(response))
 
 	def post(self,request):
