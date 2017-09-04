@@ -9,11 +9,14 @@ li {
 }
 
 article.dream {
-	width: 100%;
-	background-color: #fef3e1;
-	padding: 20px;
-	color: #92609f;
+	margin-bottom: 35px;
 	
+	.content {
+		width: 100%;
+		background-color: #fef3e1;
+		padding: 20px;
+		color: #92609f;
+	}
 	.title {
 		margin-bottom: 20px;
 	}
@@ -26,5 +29,10 @@ article.dream {
 	.button {
 		display: block;
 		border:none;
+		background-color: #92609f;
+		color: #fff;
+		width: 100%;
+    	padding: 8px;
+    	cursor: pointer;
 	}
 }
