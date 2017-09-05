@@ -12,12 +12,12 @@ import { Component } from '@angular/core';
 			</a>
 
 			<ul>
-				<li><a href="http://institutorope.com.br/" target="_blank">Home</a></li>
-				<li><a href="#">Instituto Rope</a></li>
-				<li><a href="#">Sonhos</a></li>
-				<li><a href="#">Parceiros</a></li>
-				<li><a href="#">Como Apoiar</a></li>
-				<li><a href="#">Fale Conosco</a></li>
+				<li><a href="http://institutorope.com.br/">Home</a></li>
+				<li><a href="http://institutorope.com.br/quem-somos/">Quem Somos</a></li>
+				<li><a href="http://institutorope.com.br/sonhos-realizados/">Sonhos Realizados</a></li>
+				<li><a href="http://institutorope.com.br/parceiros/">Parceiros</a></li>
+				<li><a href="http://sonhos.institutorope.com.br/adote-um-sonho">Como Apoiar</a></li>
+				<li><a href="http://institutorope.com.br/fale-conosco/">Fale Conosco</a></li>
 			</ul>
 		</div>
 	</header>
