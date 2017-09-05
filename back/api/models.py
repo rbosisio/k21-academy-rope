@@ -190,7 +190,7 @@ class Dream(models.Model):
 	dream_nickname = models.CharField('Apelido do sonho (Esse campo será publicado)', max_length=255, default=None, null=True, blank=True)
 	dream_short_description = models.TextField('Descrição rápida do sonho para página aberta (Esse campo será publicado)', default=None, null=True, blank=True)
 	
-	dream_needs = models.TextField('Necessidades do Sonho (Esse campo será publicado)', default=None, null=True, blank=True)
+	dream_needs = models.TextField('Necessidades do Sonho separadas por ponto e vírgula ";" (Esse campo será publicado)', default=None, null=True, blank=True)
 	needs_attended = models.TextField('Necessidades Atendidas', default=None, null=True, blank=True)
 	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default='sonho_ir', null=True, blank=True)
 	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
