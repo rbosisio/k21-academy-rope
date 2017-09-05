@@ -1,9 +1,15 @@
 <h1 class="logo-title my-3" >Cadastrar Voluntário</h1>
-<div class="alert alert-danger" *ngIf="registerForm.invalid && formSubmitted">
-  Preecha todos os campos obrigatórios.
+<div class="my-3">
+    <a (click)='onBack()' href="javascript: void()"><i class="fa fa-angle-left" aria-hidden="true"></i> Voltar</a> 
 </div>
-<div class="alert alert-danger" *ngIf="registerForm.invalid && formSubmitted">
-  Voluntário cadastrado com sucesso! Entraremos em contato em breve!
+<div class="alert alert-danger hide-alert" *ngIf="registerForm.invalid && formSubmitted">
+  {{fieldsRequiredMessage}}
+</div>
+<div class="alert alert-danger" *ngIf="failed">
+  {{errorMessage}}
+</div>  
+<div class="alert alert-success" *ngIf="success">
+  {{successMessage}}
 </div>
 <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
     <div class="form-group row" >
@@ -51,6 +57,13 @@
       <div class="col-6">
         <label>Talento<span class="text-danger">*</span></label>
         <input formControlName="talents" type="text" class="form-control" required >
+      </div>
+    </div>
+    
+    <div class="form-group row" >
+      <div class="col-6">
+        <label>Dias disponíveis<span class="text-danger">*</span></label><br />
+        <ss-multiselect-dropdown formControlName="available_days_times" [settings]="mySettings" [options]="availableDaysTimesOptions" [(ngModel)]="availableDaysTimesOptionsModel"></ss-multiselect-dropdown>
       </div>
     </div>
     
