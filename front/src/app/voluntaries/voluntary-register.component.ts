@@ -9,7 +9,7 @@ import { Http } from '@angular/http';
 })
 export class VoluntaryRegisterComponent {
 
-  registerVoluntaryUrl: string = "http://sonhos.institutorope.com.br:8000/api/voluntaries/";
+  registerVoluntaryUrl: string = "http://admin.institutorope.com.br/api/voluntaries/";
 
   formSubmitted: boolean = false;
   registerFormFieldValid: {} = {};

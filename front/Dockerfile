@@ -9,6 +9,8 @@ RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-g
 RUN a2enmod php7.0
 RUN a2enmod rewrite
 RUN a2enmod headers
+RUN a2enmod proxy
+RUN a2enmod proxy_http
 
 # Update the PHP.ini file, enable <? ?> tags and quieten logging.
 RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/7.0/apache2/php.ini

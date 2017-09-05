@@ -80,10 +80,11 @@ class Partner(models.Model):
         ('pf', 'Pessoa Física'),
         ('pj', 'Pessoa Jurídica'),
     )
-	document_type = models.CharField('Opção de pessoa', max_length=20, choices=DOCUMENT_TYPE, default='pf')
+	document_type = models.CharField('Tipo de pessoa', max_length=20, choices=DOCUMENT_TYPE, default='pf')
 	
 	contact_name = models.CharField('Nome do contato', max_length=255, default=None, null=True, blank=True)
-	document = models.CharField('Documento', max_length=255, default=None, null=True, blank=True)
+	company_name = models.CharField('Nome da empresa (PJ)', max_length=255, default=None, null=True, blank=True)
+	document = models.CharField('Documento (CPF/CNPJ)', max_length=255, default=None, null=True, blank=True)
 	telephone = models.CharField('Telefone', max_length=255, default=None, null=True, blank=True)
 	cellphone = models.CharField('Celular', max_length=255, default=None, null=True, blank=True)
 	address = models.CharField('Endereço ', max_length=255, default=None, null=True, blank=True)
@@ -117,8 +118,9 @@ class Dream(models.Model):
 
 	STATUS = (
         ('novo', 'Novo'),
-        ('inviavel', 'Inviavel'),
+        ('inviavel', 'Inviável'),
         ('aprovado', 'Aprovado'),
+        ('viabilizado', 'Viabilizado'),
         ('realizado', 'Realizado')
     )
 

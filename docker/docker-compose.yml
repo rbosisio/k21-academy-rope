@@ -1,18 +1,5 @@
 version: '2'
 services:
-  apache:
-    build: "../front/"
-    volumes:
-      - "./apache/www:/var/www/"
-      - "./apache/conf:/etc/apache2/sites-enabled/"
-    ports:
-     - "80:80"
-  gunicorn:
-    build: "../back/"
-    volumes:
-      - "../back/:/app/"
-    ports:
-     - "8000:8000"
   mysql:
     image: "mysql"
     volumes:
@@ -21,3 +8,21 @@ services:
      - "3306:3306"
     environment:
        MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+       MYSQL_DATABASE: "${MYSQL_DATABASE}"
+       MYSQL_USER: "${MYSQL_USER}"
+       MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+  apache:
+    build: "../front/"
+    volumes:
+      - "./apache/www:/var/www/"
+      - "./apache/conf:/etc/apache2/sites-enabled/"
+    ports:
+     - "80:80"
+    links:
+      - mysql
+  gunicorn:
+    build: "../back/"
+    volumes:
+      - "../back/:/app/"
+    ports:
+     - "8000:8000"
