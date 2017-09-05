@@ -106,7 +106,7 @@ class Partner(models.Model):
 	available_days_times = models.ManyToManyField(AvailableDaysTimes, blank=True)
 
 	def __str__(self):
-		return self.name
+		return self.contact_name
 
 	class Meta:
 		verbose_name_plural = 'Parceiros'
