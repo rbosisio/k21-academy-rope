@@ -19,6 +19,13 @@ export class DreamListComponent implements OnInit {
       let results = JSON.parse(data['_body']);
       
       for(let result of results){
+
+        let needs_splited = result.fields.dream_needs.split(';');
+        if(needs_splited.slice(-1)[0] == "")
+          needs_splited.pop();
+        
+        result.fields.dream_needs = needs_splited;
+
         this.dreams.push(result.fields);
       }
 
