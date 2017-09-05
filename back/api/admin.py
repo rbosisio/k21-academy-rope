@@ -13,7 +13,7 @@ class VolunteerAdmin(admin.ModelAdmin):
 	list_filter = ('status',)
 
 class PartnerAdmin(admin.ModelAdmin):
-	list_display = ('name', 'telephone', 'money_help', 'service_help', 'help_description', 'observation', 'status')
+	list_display = ('company_name', 'contact_name', 'telephone', 'money_help', 'service_help', 'help_description', 'observation', 'status')
 	list_filter = ('status',)
 
 class DaysTimesAdmin(admin.ModelAdmin):

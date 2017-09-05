@@ -127,9 +127,9 @@ class ApiPartners(APIView):
 		partner = None
 		try:
 			partner = Partner(
-					name = body['name'],
 					document_type = body['document_type'],
 					contact_name = body['contact_name'],
+					company_name = body['company_name'],
 					document = body['document'],
 					telephone = body['telephone'],
 					cellphone = body['cellphone'],

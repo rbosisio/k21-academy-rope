@@ -74,7 +74,6 @@ class Volunteer(models.Model):
 # ================================================================================================================================= #
 
 class Partner(models.Model):
-	name = models.CharField('Nome', max_length=255, default=None, null=True, blank=True)
 
 	DOCUMENT_TYPE = (
         ('pf', 'Pessoa Física'),
