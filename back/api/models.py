@@ -43,8 +43,8 @@ class Volunteer(models.Model):
 	cellphone = models.CharField('Celular', max_length=255, default=None, null=True, blank=True)
 	email = models.CharField('Email', max_length=255, default=None, null=True, blank=True)
 	address = models.CharField('Endereço ', max_length=255, default=None, null=True, blank=True)
-	personal_characteristics = models.TextField('Características pessoais', default=None, null=True, blank=True)
-	talents = models.TextField('Talentos', default=None, null=True, blank=True)
+	personal_characteristics = models.TextField('Características pessoais (tímido, engraçado, paciente, etc)', default=None, null=True, blank=True)
+	talents = models.TextField('Talentos (Profissão, o que faz bem, o que gosta de fazer, etc)', default=None, null=True, blank=True)
 
 	available_days_times = models.ManyToManyField(AvailableDaysTimes, blank=True)
 
