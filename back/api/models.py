@@ -88,8 +88,8 @@ class Partner(models.Model):
 	cellphone = models.CharField('Celular', max_length=255, default=None, null=True, blank=True)
 	address = models.CharField('Endereço ', max_length=255, default=None, null=True, blank=True)
 
-	has_specific_dream = models.BooleanField('Tem sonho específico no qual quer ajudar?', default=False)
-	money_help = models.BooleanField('Ajuda com dinheiro?', default=False)
+	has_specific_dream = models.BooleanField('Ajuda com um sonho específico?', default=False)
+	money_help = models.BooleanField('Ajuda com recusos financeiros?', default=False)
 	service_help = models.BooleanField('Ajuda com serviço?', default=False)
 
 	help_description = models.TextField('Descrição da ajuda', default=None, null=True, blank=True)
