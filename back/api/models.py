@@ -63,7 +63,7 @@ class Volunteer(models.Model):
         ('reprovado', 'Reprovado')
     )
 
-	status = models.CharField('Status ', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
+	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 
 	def __str__(self):
 		return self.name
@@ -88,20 +88,20 @@ class Partner(models.Model):
 	cellphone = models.CharField('Celular', max_length=255, default=None, null=True, blank=True)
 	address = models.CharField('Endereço ', max_length=255, default=None, null=True, blank=True)
 
-	has_specific_dream = models.BooleanField('Tem sonho específico?', default=False)
+	has_specific_dream = models.BooleanField('Tem sonho específico no qual quer ajudar?', default=False)
 	money_help = models.BooleanField('Ajuda com dinheiro?', default=False)
 	service_help = models.BooleanField('Ajuda com serviço?', default=False)
 
 	help_description = models.TextField('Descrição da ajuda', default=None, null=True, blank=True)
 
-	observation = models.TextField('Observações (Especificar doação)', default=None, null=True, blank=True)
+	observation = models.TextField('Observações extras', default=None, null=True, blank=True)
 
 	STATUS = (
         ('novo', 'Novo'),
         ('aprovado', 'Aprovado'),
         ('reprovado', 'Reprovado')
     )
-	status = models.CharField('Designação do voluntário ', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
+	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 	
 	available_days_times = models.ManyToManyField(AvailableDaysTimes, blank=True)
 
