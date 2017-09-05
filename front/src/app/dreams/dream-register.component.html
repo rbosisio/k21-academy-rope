@@ -1,4 +1,7 @@
 <h1 class="logo-title my-3" ></h1>
+<div class="my-3">
+    <a (click)='onBack()' href="javascript: void(0);"><i class="fa fa-angle-left" aria-hidden="true"></i> Voltar</a> 
+</div>
 <div class="alert alert-danger hide-alert" *ngIf="registerForm.invalid && formSubmitted">
   {{fieldsRequiredMessage}}
 </div>

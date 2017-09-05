@@ -154,8 +154,8 @@ class Dream(models.Model):
 
 	dreamer_nickname = models.CharField('Apelido do sonhador', max_length=255, default=None, null=True, blank=True)
 
-	significative_days = models.CharField('Data importante pro sonho, caso exista', max_length=255, default=None, null=True, blank=True)
-	impediment_days = models.TextField('Dias no qual o sonho não pode ser realizado (Dias de tratamento, etc)', default=None, null=True, blank=True)
+	provisional_date = models.DateField('Data prevista para realização', default=None, null=True, blank=True)
+	significative_and_impediment_days = models.TextField('Data importante para o sonho ou dias no qual o sonho não pode ser realizado (Dias de tratamento, etc)', default=None, null=True, blank=True)
 	mental_health = models.CharField('Condição mental do sonhador', max_length=255, default=None, null=True, blank=True)
 
 	uses_health_device = models.BooleanField('Sonhador usa algum dispositivo?', default=False)
