@@ -20,7 +20,9 @@ import { PartnerModule } from "./partners/partner.module";
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: 'welcome', component: WelcomeComponent }
+      { path: 'welcome', component: WelcomeComponent },
+      { path: '', redirectTo: 'welcome', pathMatch: 'full'},
+      { path: '**', redirectTo: 'welcome', pathMatch: 'full'}
     ]),
     DreamModule,
     VoluntaryModule,
