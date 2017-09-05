@@ -5,14 +5,18 @@
 		<li *ngFor='let dream of dreams'>
 			<article class="dream">
 				<div class="content row">
-					<div class="col-6">
+					<div class="col-12 col-sm-6">
 						<h3 class="title">“ {{dream.dream_nickname}} ”</h3>
 						<p class="description">{{dream.dream_short_description}}</p>
 					</div>
 					
-					<div class="col-6 needs">
+					<div class="col-12 needs col-sm-6">
 						<h3 class="title">O Que precisamos...</h3>
-						<p class="description">{{dream.dream_needs}}</p>
+						<ul style="padding-left: 22px;">
+							<li class="description" *ngFor='let need of dream.dream_needs'>
+								{{need}}
+							</li>
+						</ul>
 					</div>
 
 					<div class="contact-area">
