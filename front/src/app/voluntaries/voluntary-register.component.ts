@@ -88,6 +88,8 @@ export class VoluntaryRegisterComponent implements OnInit {
         data => {
           console.log("success!", data);
           this.success = true;
+          this.formSubmitted = false;
+          this.registerForm.reset();
         },
         error => {
           this.failed = true;

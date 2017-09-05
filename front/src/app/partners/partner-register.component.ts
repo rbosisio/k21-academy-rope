@@ -84,8 +84,6 @@ export class PartnerRegisterComponent implements OnInit {
     let serializedForm = JSON.stringify(formObj);
 
     window.scrollTo(0,0);
-    console.log(formObj);
-
 
     if(this.registerForm.valid){
       this.http.post(this.registerPartnerUrl, serializedForm)
@@ -93,6 +91,8 @@ export class PartnerRegisterComponent implements OnInit {
         data => {
           console.log("success!", data);
           this.success = true;
+          this.formSubmitted = false;
+          this.registerForm.reset();
         },
         error => {
           this.failed = true;
