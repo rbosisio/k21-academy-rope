@@ -9,7 +9,7 @@ import { Http } from '@angular/http';
 })
 export class DreamRegisterComponent {
   
-  registerDreamUrl: string = "http://sonhos.institutorope.com.br:8000/api/dreams/";
+  registerDreamUrl: string = "http://admin.institutorope.com.br/api/dreams/";
   //registerDreamUrl: string = "http://localhost:8000/api/dreams/";
   
   fieldsRequiredMessage: string = "Preecha todos os campos obrigatórios.";
