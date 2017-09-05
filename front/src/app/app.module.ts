@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { DreamModule } from "./dreams/dream.module";
 import { VoluntaryModule } from "./voluntaries/voluntary.module";
+import { PartnerModule } from "./partners/partner.module";
 
 @NgModule({
   declarations: [
@@ -19,12 +20,11 @@ import { VoluntaryModule } from "./voluntaries/voluntary.module";
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: 'welcome', component: WelcomeComponent },
-      { path: '', redirectTo: 'welcome', pathMatch: 'full'},
-      { path: '**', redirectTo: 'welcome', pathMatch: 'full'}
+      { path: 'welcome', component: WelcomeComponent }
     ]),
     DreamModule,
-    VoluntaryModule
+    VoluntaryModule,
+    PartnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
