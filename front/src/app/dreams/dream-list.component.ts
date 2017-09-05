@@ -9,7 +9,7 @@ import { Dream } from "./dream";
 })
 export class DreamListComponent implements OnInit {
 
-  dreamsListUrl: string = "http://sonhos.institutorope.com.br:8000/api/dreams/status/aprovado/";
+  dreamsListUrl: string = "http://admin.institutorope.com.br/api/dreams/status/aprovado/";
   dreams: Dream[] = [];
 
   constructor(private http: Http) { }
@@ -25,5 +25,9 @@ export class DreamListComponent implements OnInit {
       console.log(this.dreams);
     }); 
   }
+
+  // handleClick():void {
+  // 	console.log('aqui');
+  // }
 
 }
