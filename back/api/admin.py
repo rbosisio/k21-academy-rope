@@ -10,11 +10,11 @@ class DreamAdmin(admin.ModelAdmin):
 
 class VolunteerAdmin(admin.ModelAdmin):
 	list_display = ('name', 'email','assignment', 'status')
-	list_filter = ('status',)
+	list_filter = ('status', 'assignment')
 
 class PartnerAdmin(admin.ModelAdmin):
-	list_display = ('name', 'telephone', 'money_help', 'service_help', 'help_description', 'observation', 'status')
-	list_filter = ('status',)
+	list_display = ('company_name', 'contact_name', 'telephone', 'money_help', 'service_help', 'has_specific_dream', 'status')
+	list_filter = ('status', 'money_help', 'service_help', 'has_specific_dream')
 
 class DaysTimesAdmin(admin.ModelAdmin):
 	list_display = ('day', 'time')

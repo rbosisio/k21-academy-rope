@@ -15,7 +15,7 @@ export class VoluntaryRegisterComponent implements OnInit {
 
   fieldsRequiredMessage: string = "Preecha todos os campos obrigatórios.";
   errorMessage: string = "Ocorreu um erro no cadastro do sonho. Por favor tente novamente ou entre em contanto conosco.";
-  successMessage: string = "Sonho cadastrado com sucesso! Entraremos em contato em breve!";
+  successMessage: string = "Seu cadastrado como voluntáio foi realizado com sucesso! Entraremos em contato em breve!";
 
   success: boolean = false;
   failed: boolean = false;
@@ -80,6 +80,8 @@ export class VoluntaryRegisterComponent implements OnInit {
     this.formSubmitted = true;
     let formObj = this.registerForm.getRawValue();
     let serializedForm = JSON.stringify(formObj);
+
+    window.scrollTo(0,0);
 
     if(this.registerForm.valid){
       this.http.post(this.registerVoluntaryUrl, serializedForm)

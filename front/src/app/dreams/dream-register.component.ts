@@ -51,7 +51,6 @@ export class DreamRegisterComponent {
     let formObj = this.registerForm.getRawValue();
     let serializedForm = JSON.stringify(formObj);
   
-    console.log(formObj);
     window.scrollTo(0,0);
 
     if(this.registerForm.valid){

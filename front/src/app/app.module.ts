@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { DreamModule } from "./dreams/dream.module";
 import { VoluntaryModule } from "./voluntaries/voluntary.module";
+import { PartnerModule } from "./partners/partner.module";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { VoluntaryModule } from "./voluntaries/voluntary.module";
       { path: '**', redirectTo: 'welcome', pathMatch: 'full'}
     ]),
     DreamModule,
-    VoluntaryModule
+    VoluntaryModule,
+    PartnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
