@@ -5,8 +5,8 @@ from django import forms
 # Register your models here.
 
 class DreamAdmin(admin.ModelAdmin):
-    list_display = ('dreamer_name', 'dream_nickname', 'status')
-    list_filter = ('status',)
+    list_display = ('dreamer_name', 'dream_nickname', 'local', 'provisional_date', 'status')
+    list_filter = ('status', 'local', 'provisional_date')
 
 class VolunteerAdmin(admin.ModelAdmin):
 	list_display = ('name', 'email','assignment', 'status')
