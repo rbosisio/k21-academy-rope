@@ -43,8 +43,8 @@ class Volunteer(models.Model):
 	cellphone = models.CharField('Celular', max_length=255, default=None, null=True, blank=True)
 	email = models.CharField('Email', max_length=255, default=None, null=True, blank=True)
 	address = models.CharField('Endereço ', max_length=255, default=None, null=True, blank=True)
-	personal_characteristics = models.TextField('Características pessoais', default=None, null=True, blank=True)
-	talents = models.TextField('Talentos', default=None, null=True, blank=True)
+	personal_characteristics = models.TextField('Características pessoais (tímido, engraçado, paciente, etc)', default=None, null=True, blank=True)
+	talents = models.TextField('Talentos (Profissão, o que faz bem, o que gosta de fazer, etc)', default=None, null=True, blank=True)
 
 	available_days_times = models.ManyToManyField(AvailableDaysTimes, blank=True)
 
@@ -88,8 +88,8 @@ class Partner(models.Model):
 	cellphone = models.CharField('Celular', max_length=255, default=None, null=True, blank=True)
 	address = models.CharField('Endereço ', max_length=255, default=None, null=True, blank=True)
 
-	has_specific_dream = models.BooleanField('Tem sonho específico no qual quer ajudar?', default=False)
-	money_help = models.BooleanField('Ajuda com dinheiro?', default=False)
+	has_specific_dream = models.BooleanField('Ajuda com um sonho específico?', default=False)
+	money_help = models.BooleanField('Ajuda com recusos financeiros?', default=False)
 	service_help = models.BooleanField('Ajuda com serviço?', default=False)
 
 	help_description = models.TextField('Descrição da ajuda', default=None, null=True, blank=True)
@@ -154,8 +154,8 @@ class Dream(models.Model):
 
 	dreamer_nickname = models.CharField('Apelido do sonhador', max_length=255, default=None, null=True, blank=True)
 
-	significative_days = models.CharField('Data importante pro sonho, caso exista', max_length=255, default=None, null=True, blank=True)
-	impediment_days = models.TextField('Dias no qual o sonho não pode ser realizado (Dias de tratamento, etc)', default=None, null=True, blank=True)
+	provisional_date = models.DateField('Data prevista para realização', default=None, null=True, blank=True)
+	significative_and_impediment_days = models.TextField('Data importante para o sonho ou dias no qual o sonho não pode ser realizado (Dias de tratamento, etc)', default=None, null=True, blank=True)
 	mental_health = models.CharField('Condição mental do sonhador', max_length=255, default=None, null=True, blank=True)
 
 	uses_health_device = models.BooleanField('Sonhador usa algum dispositivo?', default=False)
