@@ -18,6 +18,7 @@ export class DreamRegisterComponent {
 
   formSubmitted: boolean = false;
   success: boolean = false;
+  failed: boolean = false;
   registerFormFieldValid: {} = {};
   registerForm:FormGroup = new FormGroup({
     dreamer_name: new FormControl('', Validators.required),
@@ -51,10 +52,6 @@ export class DreamRegisterComponent {
     let serializedForm = JSON.stringify(formObj);
   
     console.log(formObj);
-
-    setTimeout(function() {
-        this.formSubmitted = false;
-    }.bind(this), 5000);
     window.scrollTo(0,0);
 
     if(this.registerForm.valid){
@@ -65,7 +62,7 @@ export class DreamRegisterComponent {
             this.success = true;
           },
           error => {
-            this.success = false;
+            this.failed = true;
             console.error("couldn't post because", error);
           }
       );

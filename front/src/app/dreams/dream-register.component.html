@@ -2,10 +2,10 @@
 <div class="alert alert-danger hide-alert" *ngIf="registerForm.invalid && formSubmitted">
   {{fieldsRequiredMessage}}
 </div>
-<div class="alert alert-danger" *ngIf="registerForm.valid && !success && formSubmitted">
+<div class="alert alert-danger" *ngIf="failed">
   {{errorMessage}}
 </div>  
-<div class="alert alert-success" *ngIf="success && formSubmitted">
+<div class="alert alert-success" *ngIf="success">
   {{successMessage}}
 </div>
 <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
