@@ -106,6 +106,8 @@ class Partner(models.Model):
 	available_days_times = models.ManyToManyField(AvailableDaysTimes, blank=True)
 
 	def __str__(self):
+		if self.company_name:
+			return self.company_name
 		return self.contact_name
 
 	class Meta:
