@@ -14,13 +14,12 @@ export class VoluntaryRegisterComponent implements OnInit {
   registerVoluntaryUrl: string = "http://admin.institutorope.com.br/api/volunteers/";
 
   fieldsRequiredMessage: string = "Preecha todos os campos obrigatórios.";
-  errorMessage: string = "Ocorreu um erro no cadastro do sonho. Por favor tente novamente ou entre em contanto conosco.";
-  successMessage: string = "Seu cadastrado como voluntáio foi realizado com sucesso! Entraremos em contato em breve!";
+  errorMessage: string = "Ocorreu um erro no seu cadastro. Por favor tente novamente ou entre em contanto conosco.";
+  successMessage: string = "Seu cadastrado como voluntário foi realizado com sucesso! Entraremos em contato em breve!";
 
   success: boolean = false;
   failed: boolean = false;
   formSubmitted: boolean = false;
-  registerFormFieldValid: {} = {};
   registerForm:FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     nickname: new FormControl('', Validators.required),
@@ -89,6 +88,8 @@ export class VoluntaryRegisterComponent implements OnInit {
         data => {
           console.log("success!", data);
           this.success = true;
+          this.formSubmitted = false;
+          this.registerForm.reset();
         },
         error => {
           this.failed = true;
@@ -99,7 +100,7 @@ export class VoluntaryRegisterComponent implements OnInit {
   }
 
   onBack(): void {
-    this._router.navigate(['orders']);
+    this._router.navigate(['home']);
   }
 
 }

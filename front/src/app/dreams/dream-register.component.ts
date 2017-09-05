@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators  } from '@angular/forms'
 import { Http } from '@angular/http';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-dream-register',
@@ -44,7 +45,8 @@ export class DreamRegisterComponent {
     category: new FormControl()
   });
 
-  constructor(private http: Http) { }
+  constructor(private http: Http,
+              private _router: Router) { }
 
   onFormSubmit(): void {
     this.formSubmitted = true;
@@ -59,6 +61,8 @@ export class DreamRegisterComponent {
           data => {
             console.log("success!", data);
             this.success = true;
+            this.formSubmitted = false;
+            this.registerForm.reset();
           },
           error => {
             this.failed = true;
@@ -66,6 +70,11 @@ export class DreamRegisterComponent {
           }
       );
     }
+    
   } 
+
+  onBack(): void {
+    this._router.navigate(['home']);
+  }
 
 }

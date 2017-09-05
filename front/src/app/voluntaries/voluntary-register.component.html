@@ -1,6 +1,6 @@
-<h1 class="logo-title my-3" >Cadastrar Voluntário</h1>
+<h1 class="logo-title my-3" ></h1>
 <div class="my-3">
-    <a (click)='onBack()' href="javascript: void()"><i class="fa fa-angle-left" aria-hidden="true"></i> Voltar</a> 
+    <a (click)='onBack()' href="javascript: void(0);"><i class="fa fa-angle-left" aria-hidden="true"></i> Voltar</a> 
 </div>
 <div class="alert alert-danger hide-alert" *ngIf="registerForm.invalid && formSubmitted">
   {{fieldsRequiredMessage}}
@@ -68,8 +68,8 @@
     </div>
     
     <div class="form-group row">
-      <div class="col">
-        <button type="submit" class="btn btn-primary">Cadastrar Voluntário</button>
+      <div class="col text-right">
+        <button type="submit" class="btn btn-primary">Ser um Voluntário</button>
       </div>
     </div>
 </form>

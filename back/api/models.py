@@ -106,6 +106,8 @@ class Partner(models.Model):
 	available_days_times = models.ManyToManyField(AvailableDaysTimes, blank=True)
 
 	def __str__(self):
+		if self.company_name:
+			return self.company_name
 		return self.contact_name
 
 	class Meta:
@@ -154,8 +156,8 @@ class Dream(models.Model):
 
 	dreamer_nickname = models.CharField('Apelido do sonhador', max_length=255, default=None, null=True, blank=True)
 
-	significative_days = models.CharField('Data importante pro sonho, caso exista', max_length=255, default=None, null=True, blank=True)
-	impediment_days = models.TextField('Dias no qual o sonho não pode ser realizado (Dias de tratamento, etc)', default=None, null=True, blank=True)
+	provisional_date = models.DateField('Data prevista para realização', default=None, null=True, blank=True)
+	significative_and_impediment_days = models.TextField('Data importante para o sonho ou dias no qual o sonho não pode ser realizado (Dias de tratamento, etc)', default=None, null=True, blank=True)
 	mental_health = models.CharField('Condição mental do sonhador', max_length=255, default=None, null=True, blank=True)
 
 	uses_health_device = models.BooleanField('Sonhador usa algum dispositivo?', default=False)
@@ -183,8 +185,6 @@ class Dream(models.Model):
 
 	spendings = models.TextField('Valores gastos', default=None, null=True, blank=True)
 
-	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default='sonho_ir', null=True, blank=True)
-	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 	planning_description = models.TextField('Planejamento do Sonho', default=None, null=True, blank=True)
 	
 	observations = models.TextField('Mais alguma informação importante (Restrição alimentar, autonomia pra ir ao banheiro, etc)', default=None, null=True, blank=True)
@@ -194,6 +194,8 @@ class Dream(models.Model):
 	
 	dream_needs = models.TextField('Necessidades do Sonho (Esse campo será publicado)', default=None, null=True, blank=True)
 	needs_attended = models.TextField('Necessidades Atendidas', default=None, null=True, blank=True)
+	category = models.CharField('Categoria', max_length=20, choices=CATEGORY, default='sonho_ir', null=True, blank=True)
+	status = models.CharField('Status', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 
 	class Meta:
 		verbose_name_plural = 'Sonhos'
