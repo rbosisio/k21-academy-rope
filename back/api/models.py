@@ -78,7 +78,7 @@ class Partner(models.Model):
         ('pf', 'Pessoa Física'),
         ('pj', 'Pessoa Jurídica'),
     )
-	document_type = models.CharField('Opção de pessoa', max_length=20, choices=DOCUMENT_TYPE, default='pf')
+	document_type = models.CharField('Tipo de pessoa', max_length=20, choices=DOCUMENT_TYPE, default='pf')
 	
 	contact_name = models.CharField('Nome do contato', max_length=255, default=None, null=True, blank=True)
 	company_name = models.CharField('Nome da empresa (PJ)', max_length=255, default=None, null=True, blank=True)
