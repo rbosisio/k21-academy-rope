@@ -3,7 +3,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from api.models import Dream, Volunteer, AvailableDaysTimes
+from api.models import Dream, Volunteer, Partner, AvailableDaysTimes
 import json
 from django.core import serializers
 
@@ -88,9 +88,7 @@ class ApiVolunteers(APIView):
 					email = body['email'],
 					address = body['address'],
 					personal_characteristics = body['personal_characteristics'],
-					talents = body['talents'],
-					assignment = body['assignment'],
-					status = body['status']
+					talents = body['talents']
 				)
 			days_times = body['available_days_times']
 			volunteer.save()
@@ -105,3 +103,54 @@ class ApiVolunteers(APIView):
 			return Response({'error': True, 'msg': 'Erro ao salvar o voluntário!', "exception": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 		volunteer_json = json.loads(serializers.serialize("json", [Volunteer.objects.get(pk=volunteer.pk),]))
 		return Response(volunteer_json)
+
+
+
+# =================================================================================================== #
+
+
+
+class ApiPartners(APIView):
+
+	renderer_classes = (JSONRenderer, )
+
+	def get(self,request, id=None):
+		if id:
+			response = serializers.serialize("json",[Partner.objects.get(pk=id),])
+		else:
+			response = serializers.serialize("json",Partner.objects.all())
+		return Response(json.loads(response))
+
+	def post(self,request):
+		body_unicode = request.body.decode('utf-8')
+		body = json.loads(body_unicode)
+		partner = None
+		try:
+			partner = Partner(
+					name = body['name'],
+					document_type = body['document_type'],
+					contact_name = body['contact_name'],
+					document = body['document'],
+					telephone = body['telephone'],
+					cellphone = body['cellphone'],
+					address = body['address'],
+					has_specific_dream = body['has_specific_dream'],
+					money_help = body['money_help'],
+					service_help = body['service_help'],
+					help_description = body['help_description'],
+					observation = body['observation']
+				)
+			print("hehe")
+			days_times = body['available_days_times']
+			partner.save()
+			for day_time in days_times:
+				print(day_time)
+				day = day_time.split('-')[0]
+				time = day_time.split('-')[1]
+				model_day_time = AvailableDaysTimes.objects.get(day=day, time=time)
+				partner.available_days_times.add(model_day_time)
+			partner.save()
+		except Exception as e:
+			return Response({'error': True, 'msg': 'Erro ao salvar o parceiro!', "exception": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+		partner_json = json.loads(serializers.serialize("json", [Partner.objects.get(pk=partner.pk),]))
+		return Response(partner_json)

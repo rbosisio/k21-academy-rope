@@ -46,7 +46,9 @@ class Volunteer(models.Model):
 	personal_characteristics = models.TextField('Características pessoais', default=None, null=True, blank=True)
 	talents = models.TextField('Talentos', default=None, null=True, blank=True)
 
-	available_days_times = models.ManyToManyField(AvailableDaysTimes)
+	available_days_times = models.ManyToManyField(AvailableDaysTimes, blank=True)
+
+	# ====================================================== Administrative fields ====================================================== #
 
 	ASSIGNMENTS = (
         ('hunter', 'Hunter'),
@@ -72,7 +74,7 @@ class Volunteer(models.Model):
 # ================================================================================================================================= #
 
 class Partner(models.Model):
-	name = models.CharField('Nome', max_length=255, default=None)
+	name = models.CharField('Nome', max_length=255, default=None, null=True, blank=True)
 
 	DOCUMENT_TYPE = (
         ('pf', 'Pessoa Física'),
@@ -88,7 +90,7 @@ class Partner(models.Model):
 
 	has_specific_dream = models.BooleanField('Tem sonho específico?', default=False)
 	money_help = models.BooleanField('Ajuda com dinheiro?', default=False)
-	service_help = models.BooleanField('Ajuda com seviço?', default=False)
+	service_help = models.BooleanField('Ajuda com serviço?', default=False)
 
 	help_description = models.TextField('Descrição da ajuda', default=None, null=True, blank=True)
 
@@ -101,7 +103,7 @@ class Partner(models.Model):
     )
 	status = models.CharField('Designação do voluntário ', max_length=20, choices=STATUS, default='novo', null=True, blank=True)
 	
-	available_days_times = models.ManyToManyField(AvailableDaysTimes)
+	available_days_times = models.ManyToManyField(AvailableDaysTimes, blank=True)
 
 	def __str__(self):
 		return self.name
@@ -171,8 +173,8 @@ class Dream(models.Model):
 
 	how_did_know_us = models.TextField('Como soube do trabalho da Rope', default=None, null=True, blank=True)
 	
-	linked_partners = models.ManyToManyField(Partner, default=None, null=True, blank=True)
-	linked_volunteers = models.ManyToManyField(Volunteer, default=None, null=True, blank=True)
+	linked_partners = models.ManyToManyField(Partner, blank=True, related_name="Parceiros conectados +")
+	linked_volunteers = models.ManyToManyField(Volunteer, blank=True, related_name="Voluntários conectados +")
 	linked_transport = models.TextField('Transporte', default=None, null=True, blank=True)
 	linked_food = models.TextField('Alimentação', default=None, null=True, blank=True)
 
