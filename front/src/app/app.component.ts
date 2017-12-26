@@ -14,9 +14,9 @@ import { Component } from '@angular/core';
 			<ul>
 				<li><a href="http://institutorope.com.br/">Home</a></li>
 				<li><a href="http://institutorope.com.br/quem-somos/">Quem Somos</a></li>
-				<li><a href="http://institutorope.com.br/sonhos-realizados/">Sonhos Realizados</a></li>
+				<li><a href="http://institutorope.com.br/sonhos/">Sonhos</a></li>
 				<li><a href="http://institutorope.com.br/parceiros/">Parceiros</a></li>
-				<li><a href="http://sonhos.institutorope.com.br/adote-um-sonho">Como Apoiar</a></li>
+				<li><a href="http://institutorope.com.br/como-apoiar/">Como Apoiar</a></li>
 				<li><a href="http://institutorope.com.br/fale-conosco/">Fale Conosco</a></li>
 			</ul>
 		</div>
